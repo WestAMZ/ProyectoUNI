@@ -7,13 +7,14 @@ using System.Web;
 
 namespace PAEDUCA.Models
 {
-    public class Universidad
+    public class Recinto
     {
         [Key]
+        public int IdRecinto { set; get; }
+        [Required, ForeignKey("Universidad")]
         public int IdUniversidad { set; get; }
-        [Required,Column(TypeName = "varchar"), MaxLength(200)]
-        public string Nombre { set; get; }
-        public byte[] Logo { set; get; }
-        public ICollection<Recinto> Recintos { set; get; }
+        [Required,StringLength(200)]
+        public string NombreRecinto  { get; set; }
+        public Universidad Universidad { set; get; }
     }
 }

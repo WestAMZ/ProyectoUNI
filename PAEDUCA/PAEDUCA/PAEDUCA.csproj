@@ -158,17 +158,22 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
-    <Compile Include="Controllers\AppConfigs\Configuraciones.cs" />
+    <Compile Include="Configs\Configuraciones.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201902080425192_Probando Fluent api.cs" />
-    <Compile Include="Migrations\201902080425192_Probando Fluent api.Designer.cs">
-      <DependentUpon>201902080425192_Probando Fluent api.cs</DependentUpon>
+    <Compile Include="Migrations\201902102048080_Migracion 1.cs" />
+    <Compile Include="Migrations\201902102048080_Migracion 1.Designer.cs">
+      <DependentUpon>201902102048080_Migracion 1.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="Models\Carrera.cs" />
+    <Compile Include="Models\Conexion.cs" />
+    <Compile Include="Models\Coordinacion_Departamento.cs" />
+    <Compile Include="Models\Sede_Facultad.cs" />
     <Compile Include="Models\PAEDUCAContext.cs" />
+    <Compile Include="Models\Recinto.cs" />
     <Compile Include="Models\Universidad.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -198,7 +203,9 @@
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.min.js" />
     <Content Include="Scripts\_references.js" />
-    <Content Include="Web.config" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </Content>
@@ -225,8 +232,8 @@
     <Content Include="Scripts\jquery-1.10.2.min.map" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201902080425192_Probando Fluent api.resx">
-      <DependentUpon>201902080425192_Probando Fluent api.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201902102048080_Migracion 1.resx">
+      <DependentUpon>201902102048080_Migracion 1.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

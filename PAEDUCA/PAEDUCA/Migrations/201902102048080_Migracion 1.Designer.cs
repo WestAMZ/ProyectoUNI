@@ -7,13 +7,13 @@ namespace PAEDUCA.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.2.0-61023")]
-    public sealed partial class ProbandoFluentapi : IMigrationMetadata
+    public sealed partial class Migracion1 : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(ProbandoFluentapi));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(Migracion1));
         
         string IMigrationMetadata.Id
         {
-            get { return "201902080425192_Probando Fluent api"; }
+            get { return "201902102048080_Migracion 1"; }
         }
         
         string IMigrationMetadata.Source
