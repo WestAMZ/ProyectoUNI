@@ -13,6 +13,8 @@ namespace PAEDUCA.Models
         public int IdUniversidad { set; get; }
         [Required,Column(TypeName = "varchar"), MaxLength(200)]
         public string Nombre { set; get; }
+        public string Siglas { set; get; }
+        public string Eslogan { set; get; }
         public byte[] Logo { set; get; }
         public ICollection<Recinto> Recintos { set; get; }
     }

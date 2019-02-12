@@ -15,6 +15,7 @@ namespace PAEDUCA.Models
         public int IdUniversidad { set; get; }
         [Required,StringLength(200)]
         public string NombreRecinto  { get; set; }
+        public string Siglas { get; set; }
         public Universidad Universidad { set; get; }
     }
 }

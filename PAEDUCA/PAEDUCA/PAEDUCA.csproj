@@ -160,19 +160,20 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Configs\Configuraciones.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="DAL\PAEDUCAInitializer.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201902102048080_Migracion 1.cs" />
-    <Compile Include="Migrations\201902102048080_Migracion 1.Designer.cs">
-      <DependentUpon>201902102048080_Migracion 1.cs</DependentUpon>
+    <Compile Include="Migrations\201902120429370_Inicial.cs" />
+    <Compile Include="Migrations\201902120429370_Inicial.Designer.cs">
+      <DependentUpon>201902120429370_Inicial.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Carrera.cs" />
     <Compile Include="Models\Conexion.cs" />
     <Compile Include="Models\Coordinacion_Departamento.cs" />
     <Compile Include="Models\Sede_Facultad.cs" />
-    <Compile Include="Models\PAEDUCAContext.cs" />
+    <Compile Include="DAL\PAEDUCAContext.cs" />
     <Compile Include="Models\Recinto.cs" />
     <Compile Include="Models\Universidad.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -232,8 +233,8 @@
     <Content Include="Scripts\jquery-1.10.2.min.map" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201902102048080_Migracion 1.resx">
-      <DependentUpon>201902102048080_Migracion 1.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201902120429370_Inicial.resx">
+      <DependentUpon>201902120429370_Inicial.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

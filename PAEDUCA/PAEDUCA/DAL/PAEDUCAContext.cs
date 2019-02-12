@@ -1,9 +1,9 @@
-﻿namespace PAEDUCA.Models
+﻿namespace PAEDUCA.DAL
 {
     using System;
     using System.Data.Entity;
     using System.Linq;
-
+    using PAEDUCA.Models;
     public class PAEDUCAContext : DbContext
     {
         // El contexto se ha configurado para usar una cadena de conexión 'DBContext' del archivo 
@@ -21,14 +21,14 @@
         // Agregue un DbSet para cada tipo de entidad que desee incluir en el modelo. Para obtener más información 
         // sobre cómo configurar y usar un modelo Code First, vea http://go.microsoft.com/fwlink/?LinkId=390109.
 
-        public virtual DbSet<Universidad> Universidad { get; set; }
-        public virtual DbSet<Recinto> Recinto { set; get; }
+        public virtual DbSet<Universidad> Universidades { get; set; }
+        public virtual DbSet<Recinto> Recintos { set; get; }
         public virtual DbSet<Sede_Facultad> Sede_Facutad { set; get; }
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             //Write Fluent API configurations here
 
-            modelBuilder.HasDefaultSchema("UNI");
+            //modelBuilder.HasDefaultSchema("UNI");
             modelBuilder.Entity<Universidad>().ToTable("Universidad");
             modelBuilder.Entity<Recinto>().ToTable("Recinto");
             modelBuilder.Entity<Sede_Facultad>().ToTable("Sede_Facultad");
