@@ -8,7 +8,7 @@
     {
    
         public PAEDUCAContext()
-            : base("Name=MS")
+            : base(new Conexion().conexion)
         {
 
         }
