@@ -5,13 +5,13 @@ using System.Linq;
 using System.Web;
 using PAEDUCA.Controllers.AppConfigs;
 
-namespace PAEDUCA.Models
+namespace PAEDUCA.DAL
 {
     public class Conexion
     {
 
-        private static EntityConnectionStringBuilder conexion = null;
-        private static String obtenerConexion() 
+        public static EntityConnectionStringBuilder conexion = null;
+        public static String obtenerConexion() 
         { 
             if(conexion==null)
             {
