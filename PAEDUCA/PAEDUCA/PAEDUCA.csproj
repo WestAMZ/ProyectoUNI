@@ -170,15 +170,16 @@
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\UNI\DepartamentoCoordinacion.cs" />
-    <Compile Include="Models\VED\AspectoVED.cs" />
+    <Compile Include="Models\VEDD\AplicacionVEDD.cs" />
+    <Compile Include="Models\VEDD\AspectoVEDD.cs" />
     <Compile Include="Models\UNI\Carrera.cs" />
     <Compile Include="DAL\Conexion.cs" />
-    <Compile Include="Models\VED\CriterioVED.cs" />
+    <Compile Include="Models\VEDD\CriterioVEDD.cs" />
     <Compile Include="Models\UNI\SedeFacultad.cs" />
     <Compile Include="DAL\PAEDUCAContext.cs" />
     <Compile Include="Models\UNI\Recinto.cs" />
-    <Compile Include="Models\VED\ProgramacionVED.cs" />
-    <Compile Include="Models\VED\ValoresPredefinidos.cs" />
+    <Compile Include="Models\VEDD\ProgramacionVEDD.cs" />
+    <Compile Include="Models\VEDD\ValoresPredefinidos.cs" />
     <Compile Include="Models\UNI\Universidad.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

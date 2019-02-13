@@ -20,14 +20,23 @@
         public virtual DbSet<SedeFacultad> Sede_Facutad { set; get; }
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
-            //base.OnModelCreating(modelBuilder);
-            //modelBuilder.Entity<HistoryRow>().ToTable(tableName: "MigrationHistory", schemaName: "admin");
-            //modelBuilder.Entity<HistoryRow>().Property(p => p.MigrationId).HasColumnName("Migration_ID");
+            base.OnModelCreating(modelBuilder);
+            modelBuilder.Entity<HistoryRow>().ToTable(tableName: "MigrationHistory", schemaName: "Admin");
+            modelBuilder.Entity<HistoryRow>().Property(p => p.MigrationId).HasColumnName("Migration_ID");
 
-            //modelBuilder.HasDefaultSchema("UNI");
+            //Tablas 
+            modelBuilder.HasDefaultSchema("UNI");
             modelBuilder.Entity<Universidad>().ToTable("Universidad");
             modelBuilder.Entity<Recinto>().ToTable("Recinto");
-            modelBuilder.Entity<SedeFacultad>().ToTable("Sede_Facultad");
+            modelBuilder.Entity<SedeFacultad>().ToTable("SedeFacultad");
+            modelBuilder.Entity<DepartamentoCoordinacion>().ToTable("DepartamentoCoordinacion");
+            modelBuilder.Entity<Carrera>().ToTable("Carrera");
+
+            //Tablas VEDD
+            modelBuilder.HasDefaultSchema("VEDD");
+            modelBuilder.Entity<AspectoVEDD>().ToTable("AspectoVEDD");
+            modelBuilder.Entity<CriterioVEDD>().ToTable("CriterioVEDD");
+            modelBuilder.Entity<ProgramacionVED>().ToTable("ProgramacionVEDD");
             //Map entity to table
             //modelBuilder.Entity<Universidad>().Map(m =>
             //{

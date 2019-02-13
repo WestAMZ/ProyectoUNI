@@ -5,7 +5,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Web;
 
-namespace PAEDUCA.Models.VED
+namespace PAEDUCA.Models
 {
     public class ProgramacionVED
     {

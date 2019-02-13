@@ -7,10 +7,10 @@ using System.Web;
 
 namespace PAEDUCA.Models
 {
-    public class CriterioVED
+    public class CriterioVEDD
     {
         [Key]
-        public int IdCriterioVED { set; get; }
+        public int IdCriterioVEDD { set; get; }
         [Required,StringLength(350)]
         public string Criterio { set; get; }
         [DisplayFormat(NullDisplayText = "Seleccione Visualización")]
@@ -20,8 +20,8 @@ namespace PAEDUCA.Models
         public Boolean Estado { set; get; }
 
         [ForeignKey("AspectoVED")]
-        public int IdAspectoVED { set; get; }
-        public virtual AspectoVED AspectoVED { set; get; }
+        public int IdAspectoVEDD { set; get; }
+        public virtual AspectoVEDD AspectoVED { set; get; }
         
     }
 }
