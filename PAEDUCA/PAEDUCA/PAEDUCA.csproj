@@ -169,13 +169,16 @@
       <DependentUpon>201902121409215_inicial.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
-    <Compile Include="Models\Carrera.cs" />
+    <Compile Include="Models\VED\AspectosVED.cs" />
+    <Compile Include="Models\UNI\Carrera.cs" />
     <Compile Include="DAL\Conexion.cs" />
-    <Compile Include="Models\Coordinacion_Departamento.cs" />
-    <Compile Include="Models\Sede_Facultad.cs" />
+    <Compile Include="Models\UNI\Coordinacion_Departamento.cs" />
+    <Compile Include="Models\VED\CriterioVED.cs" />
+    <Compile Include="Models\UNI\Sede_Facultad.cs" />
     <Compile Include="DAL\PAEDUCAContext.cs" />
-    <Compile Include="Models\Recinto.cs" />
-    <Compile Include="Models\Universidad.cs" />
+    <Compile Include="Models\UNI\Recinto.cs" />
+    <Compile Include="Models\UNI\TipoVisualizacion.cs" />
+    <Compile Include="Models\UNI\Universidad.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
