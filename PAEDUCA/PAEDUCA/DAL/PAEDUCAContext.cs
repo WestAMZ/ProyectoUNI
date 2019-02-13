@@ -4,6 +4,8 @@
     using System.Data.Entity;
     using System.Linq;
     using PAEDUCA.Models;
+    using System.Data.Entity.Migrations.History;
+
     public class PAEDUCAContext : DbContext
     {
    
@@ -18,7 +20,9 @@
         public virtual DbSet<SedeFacultad> Sede_Facutad { set; get; }
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
-            //Write Fluent API configurations here
+            //base.OnModelCreating(modelBuilder);
+            //modelBuilder.Entity<HistoryRow>().ToTable(tableName: "MigrationHistory", schemaName: "admin");
+            //modelBuilder.Entity<HistoryRow>().Property(p => p.MigrationId).HasColumnName("Migration_ID");
 
             //modelBuilder.HasDefaultSchema("UNI");
             modelBuilder.Entity<Universidad>().ToTable("Universidad");

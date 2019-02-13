@@ -5,7 +5,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Web;
 
-namespace PAEDUCA.Models.UNI
+namespace PAEDUCA.Models
 {
     public class DepartamentoCoordinacion
     {

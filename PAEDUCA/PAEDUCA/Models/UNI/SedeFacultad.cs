@@ -23,7 +23,7 @@ namespace PAEDUCA.Models
         public int IdRecinto { set; get; }
         public virtual Recinto Recinto { set; get; }
         public virtual  ICollection<Carrera> Carreraas { set; get; }
-        public virtual ICollection<CoordinacionDepartamento> CoordinacionDepartamento { set; get; }
+        public virtual ICollection<DepartamentoCoordinacion> CoordinacionDepartamento { set; get; }
 
     }
 }

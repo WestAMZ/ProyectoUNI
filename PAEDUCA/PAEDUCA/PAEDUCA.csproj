@@ -173,11 +173,11 @@
     <Compile Include="Models\VED\AspectoVED.cs" />
     <Compile Include="Models\UNI\Carrera.cs" />
     <Compile Include="DAL\Conexion.cs" />
-    <Compile Include="Models\UNI\Coordinacion_Departamento.cs" />
     <Compile Include="Models\VED\CriterioVED.cs" />
     <Compile Include="Models\UNI\SedeFacultad.cs" />
     <Compile Include="DAL\PAEDUCAContext.cs" />
     <Compile Include="Models\UNI\Recinto.cs" />
+    <Compile Include="Models\VED\ProgramacionVED.cs" />
     <Compile Include="Models\VED\ValoresPredefinidos.cs" />
     <Compile Include="Models\UNI\Universidad.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
