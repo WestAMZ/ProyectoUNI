@@ -6,7 +6,7 @@ using System.Web;
 
 namespace PAEDUCA.Models
 {
-    public class AspectosVED
+    public class AspectoVED
     {
         [Key]
         public int IdAspecto { set; get; }

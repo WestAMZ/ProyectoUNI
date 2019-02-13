@@ -16,6 +16,6 @@ namespace PAEDUCA.Models
         public string Siglas { set; get; }
         public string Eslogan { set; get; }
         public byte[] Logo { set; get; }
-        public ICollection<Recinto> Recintos { set; get; }
+        public virtual ICollection<Recinto> Recintos { set; get; }
     }
 }

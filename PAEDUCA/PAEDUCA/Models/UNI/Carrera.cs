@@ -12,6 +12,6 @@ namespace PAEDUCA.Models
         public int CantidadSemestres { set; get; }
 
         public int IdSede_Facultad { set; get; }
-        public Sede_Facultad Sede_Facultad { set; get; }
+        public virtual ICollection<SedeFacultad> Sede_Facultad { set; get; }
     }
 }

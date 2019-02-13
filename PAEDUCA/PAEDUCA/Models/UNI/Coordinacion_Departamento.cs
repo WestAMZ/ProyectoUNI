@@ -6,14 +6,14 @@ using System.Web;
 
 namespace PAEDUCA.Models
 {
-    public class Coordinacion_Departamento
+    public class CoordinacionDepartamento
     {
         [Key]
         public int IdCoordinacion_Departamento { set; get; }
         public string NombreCoordinacion_Departamento { set; get; }
 
-        public string IdSede_Facultad { set; get; }
-        public Sede_Facultad Sede_Facultad { set; get; }
+        public string IdSedeFacultad { set; get; }
+        public virtual SedeFacultad SedeFacultad { set; get; }
 
     }
 }
