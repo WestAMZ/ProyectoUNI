@@ -24,13 +24,16 @@
             modelBuilder.Entity<HistoryRow>().ToTable(tableName: "MigrationHistory", schemaName: "Admin");
             modelBuilder.Entity<HistoryRow>().Property(p => p.MigrationId).HasColumnName("Migration_ID");
 
-            //Tablas 
+            //Tablas UNI
             modelBuilder.HasDefaultSchema("UNI");
             modelBuilder.Entity<Universidad>().ToTable("Universidad");
             modelBuilder.Entity<Recinto>().ToTable("Recinto");
             modelBuilder.Entity<SedeFacultad>().ToTable("SedeFacultad");
             modelBuilder.Entity<DepartamentoCoordinacion>().ToTable("DepartamentoCoordinacion");
             modelBuilder.Entity<Carrera>().ToTable("Carrera");
+            modelBuilder.Entity<Asignatura>().ToTable("Asignatura");
+            modelBuilder.Entity<CarreraAsignatura>().ToTable("CarreraAsignatura");
+            modelBuilder.Entity<Grupo>().ToTable("Grupo");
 
             //Tablas VEDD
             modelBuilder.HasDefaultSchema("VEDD");
