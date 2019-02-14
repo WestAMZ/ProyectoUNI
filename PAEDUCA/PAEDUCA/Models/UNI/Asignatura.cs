@@ -16,7 +16,7 @@ namespace PAEDUCA.Models
         public string Tipo { set; get; }
         public int Creditos { set; get; }
         public int Oportunidades { set; get; }
-
+         
         public virtual ICollection<CarreraAsignatura> CarrerasAsignaturas { set; get; }
     }
 }

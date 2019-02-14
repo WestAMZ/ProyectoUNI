@@ -17,7 +17,9 @@ namespace PAEDUCA.Models
         public int IdCarrera { set; get; }
         [ForeignKey("Asignatura")]
         public int IdAsignatura { set; get; }
-        public virtual ICollection<Carrera> Carreras { set; get; }
-        public virtual ICollection<Asignatura> Asignaturas { set; get; }
+        public virtual Carrera Carrera{ set; get; }
+        public virtual Asignatura Asignatura { set; get; }
+        //public virtual ICollection<Carrera> Carreras { set; get; }
+        //public virtual ICollection<Asignatura> Asignaturas { set; get; }
     }
 }

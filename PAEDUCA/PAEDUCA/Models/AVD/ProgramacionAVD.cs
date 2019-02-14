@@ -14,7 +14,8 @@ namespace PAEDUCA.Models
         public DateTime FechaAplicacion { get; set; }
         public TimeSpan HoraInicio { get; set; }
         public TimeSpan HoraFin { get; set; }
-        //[ForeignKey("Docente")]
-        //public int IdDocente { get; set; }
+        [ForeignKey("Docente")]
+        public int IdDocente { get; set; } 
+        public Docente Docente { get; set; }
     }
 }

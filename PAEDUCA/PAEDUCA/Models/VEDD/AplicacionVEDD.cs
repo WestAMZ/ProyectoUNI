@@ -10,7 +10,7 @@ namespace PAEDUCA.Models
     {
         [Key]
         public int IdAplicacionVEDD { set; get; }
-        public DateTime FechaApliacion { set; get; }
+        public DateTime FechaAplicacion { set; get; }
 
 
     }

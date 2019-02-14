@@ -7,7 +7,7 @@ using System.Web;
 
 namespace PAEDUCA.Models
 {
-    public class ProgramacionVED
+    public class ProgramacionVEDD
     {
         [Key]
         public int IdProgramacionVED { set; get; }
@@ -16,5 +16,6 @@ namespace PAEDUCA.Models
         public TimeSpan HoraFin { set; get; }
         [ForeignKey("Curso")]
         public int IdCurso { set; get; }
+        public Curso Curso { set; get; }
     }
 }

@@ -164,16 +164,18 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201902121409215_inicial.cs" />
-    <Compile Include="Migrations\201902121409215_inicial.Designer.cs">
-      <DependentUpon>201902121409215_inicial.cs</DependentUpon>
+    <Compile Include="Migrations\201902141919254_Actualizacion con objetos de Martin.cs" />
+    <Compile Include="Migrations\201902141919254_Actualizacion con objetos de Martin.Designer.cs">
+      <DependentUpon>201902141919254_Actualizacion con objetos de Martin.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AVD\AspectoAVD.cs" />
     <Compile Include="Models\UNI\CarreraAsignatura.cs" />
     <Compile Include="Models\AVD\CriterioAVD.cs" />
     <Compile Include="Models\AVD\ProgramacionAVD.cs" />
-    <Compile Include="Models\AVD\ValoresPredeterminados.cs" />
+    <Compile Include="Models\UNI\CarreraSedeFacultad.cs" />
+    <Compile Include="Models\UNI\Curso.cs" />
+    <Compile Include="Models\ValoresPredeterminados.cs" />
     <Compile Include="Models\UNI\Asignatura.cs" />
     <Compile Include="Models\UNI\DepartamentoCoordinacion.cs" />
     <Compile Include="Models\UNI\Docente.cs" />
@@ -188,7 +190,6 @@
     <Compile Include="DAL\PAEDUCAContext.cs" />
     <Compile Include="Models\UNI\Recinto.cs" />
     <Compile Include="Models\VEDD\ProgramacionVEDD.cs" />
-    <Compile Include="Models\VEDD\ValoresPredefinidos.cs" />
     <Compile Include="Models\UNI\Universidad.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -247,8 +248,8 @@
     <Content Include="Scripts\jquery-1.10.2.min.map" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201902121409215_inicial.resx">
-      <DependentUpon>201902121409215_inicial.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201902141919254_Actualizacion con objetos de Martin.resx">
+      <DependentUpon>201902141919254_Actualizacion con objetos de Martin.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

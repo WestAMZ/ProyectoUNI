@@ -7,13 +7,13 @@ namespace PAEDUCA.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.2.0-61023")]
-    public sealed partial class inicial : IMigrationMetadata
+    public sealed partial class ActualizacionconobjetosdeMartin : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(inicial));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(ActualizacionconobjetosdeMartin));
         
         string IMigrationMetadata.Id
         {
-            get { return "201902121409215_inicial"; }
+            get { return "201902141919254_Actualizacion con objetos de Martin"; }
         }
         
         string IMigrationMetadata.Source

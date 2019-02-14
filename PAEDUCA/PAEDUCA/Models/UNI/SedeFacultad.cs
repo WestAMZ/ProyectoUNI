@@ -22,7 +22,7 @@ namespace PAEDUCA.Models
         [Required,ForeignKey("Recinto")]
         public int IdRecinto { set; get; }
         public virtual Recinto Recinto { set; get; }
-        public virtual  ICollection<Carrera> Carreraas { set; get; }
+        public virtual ICollection<CarreraSedeFacultad> CarreraSedeFacultad { set; get; }
         public virtual ICollection<DepartamentoCoordinacion> CoordinacionDepartamento { set; get; }
 
     }
