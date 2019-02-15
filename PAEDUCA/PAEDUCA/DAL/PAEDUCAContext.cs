@@ -41,8 +41,14 @@
         public virtual DbSet<AspectoAVD> AspectoAVD { set; get; }
         public virtual DbSet<CriterioAVD> CriterioAVD { set; get; }
         public virtual DbSet<ProgramacionAVD> ProgramacionAVD { set; get; }
-        //FALTA
-        //public virtual DbSet<AplicacionAVD> AplicacionAVD { set; get; }
+        public virtual DbSet<AplicacionAVD> AplicacionAVD { set; get; }
+
+        //AAC
+        public virtual DbSet<AspectoAAC> AspectoAAC { set; get; }
+        public virtual DbSet<CriterioAAC> CriterioAAC { set; get; }
+        public virtual DbSet<ProgramacionAAC> ProgramacionAAC { set; get; }
+        public virtual DbSet<AplicacionAAC> AplicacionAAC { set; get; }
+
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
@@ -73,10 +79,16 @@
             modelBuilder.Entity<AplicacionVEDD>().ToTable(tableName: "AplicacionVED", schemaName: "VEDD");
 
             //Tablas AVD
-
             modelBuilder.Entity<AspectoAVD>().ToTable(tableName: "AspectoAVD", schemaName: "AVD");
             modelBuilder.Entity<CriterioAVD>().ToTable(tableName: "CriterioAVD", schemaName: "AVD");
             modelBuilder.Entity<ProgramacionAVD>().ToTable(tableName: "ProgramacionAVD", schemaName: "AVD");
+            modelBuilder.Entity<ProgramacionAVD>().ToTable(tableName: "AplicacionAVD", schemaName: "AVD");
+
+            //Tablas AAC
+            modelBuilder.Entity<AspectoAVD>().ToTable(tableName: "AspectoAAC", schemaName: "AAC");
+            modelBuilder.Entity<CriterioAVD>().ToTable(tableName: "CriterioAAC", schemaName: "AAC");
+            modelBuilder.Entity<ProgramacionAVD>().ToTable(tableName: "ProgramacionAAC", schemaName: "AAC");
+            modelBuilder.Entity<ProgramacionAVD>().ToTable(tableName: "AplicacionAAC", schemaName: "AAC");
 
             //Map entity to table
             //modelBuilder.Entity<Universidad>().Map(m =>
