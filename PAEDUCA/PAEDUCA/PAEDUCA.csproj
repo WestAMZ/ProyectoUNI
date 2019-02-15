@@ -164,9 +164,9 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201902141919254_Actualizacion con objetos de Martin.cs" />
-    <Compile Include="Migrations\201902141919254_Actualizacion con objetos de Martin.Designer.cs">
-      <DependentUpon>201902141919254_Actualizacion con objetos de Martin.cs</DependentUpon>
+    <Compile Include="Migrations\201902151402357_Inicializacion.cs" />
+    <Compile Include="Migrations\201902151402357_Inicializacion.Designer.cs">
+      <DependentUpon>201902151402357_Inicializacion.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AVD\AspectoAVD.cs" />
@@ -248,8 +248,8 @@
     <Content Include="Scripts\jquery-1.10.2.min.map" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201902141919254_Actualizacion con objetos de Martin.resx">
-      <DependentUpon>201902141919254_Actualizacion con objetos de Martin.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201902151402357_Inicializacion.resx">
+      <DependentUpon>201902151402357_Inicializacion.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

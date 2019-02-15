@@ -10,7 +10,7 @@
     {
    
         public PAEDUCAContext()
-            : base("Name=Westly")
+            : base("Name=MS")
         //: base(new Conexion().conexion)
         {
 

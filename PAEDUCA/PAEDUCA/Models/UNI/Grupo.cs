@@ -16,8 +16,8 @@ namespace PAEDUCA.Models
         [StringLength(20)]
         public string Turno { set; get; }
 
-        [ForeignKey("Carrera")]
-        public int IdCarrera { set; get; }
-        public virtual Carrera Carrera { set; get; }
+        [ForeignKey("CarreraSedeFacultad")]
+        public int IdCarreraSedeFacultad { set; get; }
+        public virtual CarreraSedeFacultad CarreraSedeFacultad { set; get; }
     }
 }
