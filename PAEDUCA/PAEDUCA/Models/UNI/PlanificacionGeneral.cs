@@ -16,8 +16,8 @@ namespace PAEDUCA.Models
         public DateTime FechaCreacion { set; get; }
         public DateTime FechaFin { set; get; }
         //Nota : sujeto a cambiarse por una 3ra tabla carrera fac
-        [ForeignKey("Carrera")]
-        public int IdCarrera { set; get; }
-        public virtual Carrera Carrera { set; get; }
+        [ForeignKey("SedeFacultad")]
+        public int IdSedeFacultad { set; get; }
+        public virtual SedeFacultad SedeFacultad { set; get; }
     }
 }
