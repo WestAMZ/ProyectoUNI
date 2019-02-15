@@ -15,14 +15,14 @@ namespace PAEDUCA.Models
         public int IdGrupo { set; get; }
         [ForeignKey("Asignatura")]
         public int IdAsignatura { set; get; }
-        [ForeignKey("Recinto")]
-        public int IdRecinto { set; get; }
+        [ForeignKey("CarreraSedeFacultad")]
+        public int IdCarreraSedeFacultad { set; get; }
         public string Semestre { set; get; }
         public string Estado { set; get; }
 
         public virtual Grupo Grupo { set; get; }
         public virtual Asignatura Asignatura { set; get; }
-        public virtual Recinto Recinto { set; get; }
+        public virtual CarreraSedeFacultad CarreraSedeFacultad { set; get; }
 
     }
 }

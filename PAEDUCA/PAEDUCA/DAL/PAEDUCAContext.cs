@@ -10,21 +10,45 @@
     {
    
         public PAEDUCAContext()
-            : base("Name=MS")
+            : base("Name=Westly")
         //: base(new Conexion().conexion)
         {
 
         }
 
+        //UNI
         public virtual DbSet<Universidad> Universidades { get; set; }
         public virtual DbSet<Recinto> Recintos { set; get; }
         public virtual DbSet<SedeFacultad> Sede_Facutad { set; get; }
+        public virtual DbSet<DepartamentoCoordinacion> DepartamentoCoordinacion { set; get; }
+        public virtual DbSet<Docente> Docente { set; get; }
+        public virtual DbSet<Carrera> Carrera { set; get; }
+        public virtual DbSet<CarreraSedeFacultad> CarreraSedeFacultad { set; get; }
+        public virtual DbSet<Asignatura> Asignatura { set; get; }
+        public virtual DbSet<CarreraAsignatura> CarreraAsignatura { set; get; }
+        public virtual DbSet<Grupo> Grupo { set; get; }
+        public virtual DbSet<Curso> Curso { set; get; }
+        public virtual DbSet<PlanificacionGeneral> PlanificacionGeneral { set; get; }
+
+        //VEDD
+        public virtual DbSet<AspectoVEDD> AspectoVEDD { set; get; }
+        public virtual DbSet<CriterioVEDD> CriterioVEDD { set; get; }
+        public virtual DbSet<ProgramacionVEDD> ProgramacionVEDD { set; get; }
+        public virtual DbSet<AplicacionVEDD> AplicacionVEDD { set; get; }
+
+        //AVD
+        public virtual DbSet<AspectoAVD> AspectoAVD { set; get; }
+        public virtual DbSet<CriterioAVD> CriterioAVD { set; get; }
+        public virtual DbSet<ProgramacionAVD> ProgramacionAVD { set; get; }
+        //FALTA
+        //public virtual DbSet<AplicacionAVD> AplicacionAVD { set; get; }
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
-            modelBuilder.Entity<HistoryRow>().ToTable(tableName: "MigrationHistory", schemaName: "Admin");
-            modelBuilder.Entity<HistoryRow>().Property(p => p.MigrationId).HasColumnName("Migration_ID");
-            modelBuilder.Entity<HistoryRow>().HasKey(p => p.MigrationId);
+            modelBuilder.HasDefaultSchema("dbo");
+            //modelBuilder.Entity<HistoryRow>().ToTable(tableName: "MigrationHistory", schemaName: "Admin");
+            //modelBuilder.Entity<HistoryRow>().Property(p => p.MigrationId).HasColumnName("Migration_ID");
+            //modelBuilder.Entity<HistoryRow>().HasKey(p => p.MigrationId);
 
             //Tablas UNI
             modelBuilder.Entity<Universidad>().ToTable(tableName:"Universidad",schemaName:"UNI");
