@@ -169,6 +169,11 @@
       <DependentUpon>201902141919254_Actualizacion con objetos de Martin.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="Models\AAC\AplicacionAAC.cs" />
+    <Compile Include="Models\AAC\AspectoAAC.cs" />
+    <Compile Include="Models\AAC\CriterioAAC.cs" />
+    <Compile Include="Models\AAC\ProgramacionAAC.cs" />
+    <Compile Include="Models\AVD\AplicacionAVD.cs" />
     <Compile Include="Models\AVD\AspectoAVD.cs" />
     <Compile Include="Models\UNI\CarreraAsignatura.cs" />
     <Compile Include="Models\AVD\CriterioAVD.cs" />
