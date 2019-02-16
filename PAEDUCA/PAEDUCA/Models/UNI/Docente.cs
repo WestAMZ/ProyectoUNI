@@ -24,6 +24,7 @@ namespace PAEDUCA.Models
 
         [ForeignKey("DepartamentoCoordinacion")]
         public int IdDepartamentoCoordinacion { set; get; }
-        public DepartamentoCoordinacion DepartamentoCoordinacion { set; get; }
+        public virtual DepartamentoCoordinacion DepartamentoCoordinacion { set; get; }
+        public virtual ICollection<DocenteCurso> DocenteCurso { set; get; }
     }
 }

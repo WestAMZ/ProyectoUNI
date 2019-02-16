@@ -12,11 +12,11 @@ namespace PAEDUCA.Models
         [Key]
         public int IdDocenteCurso { set; get; }
         public bool Estado { set; get; }
-        [ForeignKey("Docente")]
-        public int IdDocente { set; get; }
-        [ForeignKey("Curso")]
-        public int IdCurso { set; get; }
-        public Docente Docente { set; get; }
-        public Curso Curso { set; get; }
+        //[ForeignKey("Docente")]
+        //public int IdDocente { set; get; }
+        //[ForeignKey("Curso")]
+        //public int IdCurso { set; get; }
+        public virtual Docente Docente { set; get; }
+        public virtual Curso Curso { set; get; }
     }
 }

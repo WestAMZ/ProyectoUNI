@@ -164,17 +164,19 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201902151402357_Inicializacion.cs" />
-    <Compile Include="Migrations\201902151402357_Inicializacion.Designer.cs">
-      <DependentUpon>201902151402357_Inicializacion.cs</DependentUpon>
+    <Compile Include="Migrations\201902160538509_Inicializacion.cs" />
+    <Compile Include="Migrations\201902160538509_Inicializacion.Designer.cs">
+      <DependentUpon>201902160538509_Inicializacion.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AAC\AplicacionAAC.cs" />
     <Compile Include="Models\AAC\AspectoAAC.cs" />
     <Compile Include="Models\AAC\CriterioAAC.cs" />
+    <Compile Include="Models\AAC\DetalleAplicacionAAC.cs" />
     <Compile Include="Models\AAC\ProgramacionAAC.cs" />
     <Compile Include="Models\AVD\AplicacionAVD.cs" />
     <Compile Include="Models\AVD\AspectoAVD.cs" />
+    <Compile Include="Models\AVD\DetalleAplicacionAVD.cs" />
     <Compile Include="Models\UNI\CarreraAsignatura.cs" />
     <Compile Include="Models\AVD\CriterioAVD.cs" />
     <Compile Include="Models\AVD\ProgramacionAVD.cs" />
@@ -195,6 +197,8 @@
     <Compile Include="Models\UNI\SedeFacultad.cs" />
     <Compile Include="DAL\PAEDUCAContext.cs" />
     <Compile Include="Models\UNI\Recinto.cs" />
+    <Compile Include="Models\VEDD\DetalleAplicacionVEDD.cs" />
+    <Compile Include="Models\VEDD\AplicacionVEDDEstudiante.cs" />
     <Compile Include="Models\VEDD\ProgramacionVEDD.cs" />
     <Compile Include="Models\UNI\Universidad.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -254,8 +258,8 @@
     <Content Include="Scripts\jquery-1.10.2.min.map" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201902151402357_Inicializacion.resx">
-      <DependentUpon>201902151402357_Inicializacion.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201902160538509_Inicializacion.resx">
+      <DependentUpon>201902160538509_Inicializacion.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

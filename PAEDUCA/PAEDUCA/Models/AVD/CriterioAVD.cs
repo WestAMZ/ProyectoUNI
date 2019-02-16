@@ -22,5 +22,6 @@ namespace PAEDUCA.Models
         [ForeignKey("AspectoAVD")]
         public int IdAspectoAVD { get; set; }
         public virtual AspectoAVD AspectoAVD { get; set; }
+        public virtual ICollection<DetalleAplicacionAVD> DetalleAplicacionAVD { set; get; }
     }
 }

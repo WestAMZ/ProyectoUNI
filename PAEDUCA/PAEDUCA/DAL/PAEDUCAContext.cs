@@ -10,7 +10,7 @@
     {
    
         public PAEDUCAContext()
-            : base("Name=MS")
+            : base("Name=Westly")
         //: base(new Conexion().conexion)
         {
 
@@ -42,12 +42,13 @@
         public virtual DbSet<CriterioAVD> CriterioAVD { set; get; }
         public virtual DbSet<ProgramacionAVD> ProgramacionAVD { set; get; }
         public virtual DbSet<AplicacionAVD> AplicacionAVD { set; get; }
-
+        public virtual DbSet<DetalleAplicacionAVD> DetalleAplicacionAVD { set; get; }
         //AAC
         public virtual DbSet<AspectoAAC> AspectoAAC { set; get; }
         public virtual DbSet<CriterioAAC> CriterioAAC { set; get; }
         public virtual DbSet<ProgramacionAAC> ProgramacionAAC { set; get; }
         public virtual DbSet<AplicacionAAC> AplicacionAAC { set; get; }
+        public virtual DbSet<DetalleAplicacionAAC> DetalleAplicacionAAC { set; get; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
@@ -63,7 +64,6 @@
             modelBuilder.Entity<SedeFacultad>().ToTable(tableName: "SedeFacultad", schemaName: "UNI");
             modelBuilder.Entity<Docente>().ToTable(tableName: "Docente", schemaName: "UNI");
             modelBuilder.Entity<DepartamentoCoordinacion>().ToTable(tableName: "DepartamentoCoordinacion", schemaName: "UNI");
-            modelBuilder.Entity<Carrera>().ToTable(tableName: "Carrera", schemaName: "UNI");
             modelBuilder.Entity<CarreraSedeFacultad>().ToTable(tableName: "CarreraSedeFacultad", schemaName: "UNI");
             modelBuilder.Entity<Asignatura>().ToTable(tableName: "Asignatura", schemaName: "UNI");
             modelBuilder.Entity<CarreraAsignatura>().ToTable(tableName: "CarreraAsignatura", schemaName: "UNI");
@@ -85,11 +85,11 @@
             modelBuilder.Entity<ProgramacionAVD>().ToTable(tableName: "AplicacionAVD", schemaName: "AVD");
 
             //Tablas AAC
-            modelBuilder.Entity<AspectoAVD>().ToTable(tableName: "AspectoAAC", schemaName: "AAC");
-            modelBuilder.Entity<CriterioAVD>().ToTable(tableName: "CriterioAAC", schemaName: "AAC");
-            modelBuilder.Entity<ProgramacionAVD>().ToTable(tableName: "ProgramacionAAC", schemaName: "AAC");
-            modelBuilder.Entity<ProgramacionAVD>().ToTable(tableName: "AplicacionAAC", schemaName: "AAC");
-
+            modelBuilder.Entity<AspectoAAC>().ToTable(tableName: "AspectoAAC", schemaName: "AAC");
+            modelBuilder.Entity<CriterioAAC>().ToTable(tableName: "CriterioAAC", schemaName: "AAC");
+            modelBuilder.Entity<ProgramacionAAC>().ToTable(tableName: "ProgramacionAAC", schemaName: "AAC");
+            modelBuilder.Entity<ProgramacionAAC>().ToTable(tableName: "AplicacionAAC", schemaName: "AAC");
+            modelBuilder.Entity<DetalleAplicacionAAC>().ToTable(tableName: "DetalleAplicacionAAC", schemaName: "AAC");
             //Map entity to table
             //modelBuilder.Entity<Universidad>().Map(m =>
             //{

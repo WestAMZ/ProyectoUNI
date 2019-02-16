@@ -13,7 +13,7 @@ namespace PAEDUCA.Migrations
         
         string IMigrationMetadata.Id
         {
-            get { return "201902151402357_Inicializacion"; }
+            get { return "201902160538509_Inicializacion"; }
         }
         
         string IMigrationMetadata.Source

@@ -11,7 +11,7 @@ namespace PAEDUCA.Models
     {
         [Key]
         public int IdCriterioVEDD { set; get; }
-        [Required,StringLength(350)]
+        [Required, StringLength(350)]
         public string Criterio { set; get; }
         [DisplayFormat(NullDisplayText = "Seleccione Visualización")]
         public TipoVisualizacion TipoVisualizacion { set; get; }
@@ -22,6 +22,6 @@ namespace PAEDUCA.Models
         [ForeignKey("AspectoVED")]
         public int IdAspectoVEDD { set; get; }
         public virtual AspectoVEDD AspectoVED { set; get; }
-        
+        public virtual ICollection<AplicacionVEDDEstudiante> AplicacionVEDDEstudiante { set;get;}
     }
 }

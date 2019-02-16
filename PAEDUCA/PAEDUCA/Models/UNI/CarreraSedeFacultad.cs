@@ -15,7 +15,8 @@ namespace PAEDUCA.Models
         public int IdCarrera { set; get; }
         [ForeignKey("SedeFacultad")]
         public int IdSedeFacultad { set; get; }
-        public SedeFacultad SedeFacultad { set; get; }
-        public Carrera Carrera { set; get; }
+        public virtual SedeFacultad SedeFacultad { set; get; }
+        public virtual Carrera Carrera { set; get; }
+        public virtual ICollection<Grupo> Grupos { set; get; }
     }
 }
