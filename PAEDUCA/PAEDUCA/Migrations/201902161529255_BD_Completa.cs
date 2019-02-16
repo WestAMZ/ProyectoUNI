@@ -3,12 +3,12 @@ namespace PAEDUCA.Migrations
     using System;
     using System.Data.Entity.Migrations;
     
-    public partial class Inicializacion : DbMigration
+    public partial class BD_Completa : DbMigration
     {
         public override void Up()
         {
             CreateTable(
-                "dbo.AplicacionAACs",
+                "AAC.AplicacionAAC",
                 c => new
                     {
                         IdAplicacionaACC = c.Int(nullable: false, identity: true),
@@ -34,7 +34,7 @@ namespace PAEDUCA.Migrations
                         CriterioAAC_IdCriterioACC = c.Int(),
                     })
                 .PrimaryKey(t => t.IdDetalleAplicacion)
-                .ForeignKey("dbo.AplicacionAACs", t => t.AplicacionAAC_IdAplicacionaACC)
+                .ForeignKey("AAC.AplicacionAAC", t => t.AplicacionAAC_IdAplicacionaACC)
                 .ForeignKey("AAC.CriterioAAC", t => t.CriterioAAC_IdCriterioACC)
                 .Index(t => t.AplicacionAAC_IdAplicacionaACC)
                 .Index(t => t.CriterioAAC_IdCriterioACC);
@@ -116,13 +116,13 @@ namespace PAEDUCA.Migrations
                         IdSedeFacultad = c.Int(nullable: false),
                     })
                 .PrimaryKey(t => t.IdCarreraSedeFacultad)
-                .ForeignKey("dbo.Carreras", t => t.IdCarrera, cascadeDelete: true)
+                .ForeignKey("UNI.Carrera", t => t.IdCarrera, cascadeDelete: true)
                 .ForeignKey("UNI.SedeFacultad", t => t.IdSedeFacultad, cascadeDelete: true)
                 .Index(t => t.IdCarrera)
                 .Index(t => t.IdSedeFacultad);
             
             CreateTable(
-                "dbo.Carreras",
+                "UNI.Carrera",
                 c => new
                     {
                         IdCarrera = c.Int(nullable: false, identity: true),
@@ -183,7 +183,7 @@ namespace PAEDUCA.Migrations
                     })
                 .PrimaryKey(t => t.IdCarreraAsignatura)
                 .ForeignKey("UNI.Asignatura", t => t.IdAsignatura, cascadeDelete: true)
-                .ForeignKey("dbo.Carreras", t => t.IdCarrera, cascadeDelete: true)
+                .ForeignKey("UNI.Carrera", t => t.IdCarrera, cascadeDelete: true)
                 .Index(t => t.IdCarrera)
                 .Index(t => t.IdAsignatura);
             
@@ -228,7 +228,7 @@ namespace PAEDUCA.Migrations
                 .PrimaryKey(t => t.IdUniversidad);
             
             CreateTable(
-                "dbo.AplicacionAVDs",
+                "AVD.AplicacionAVD",
                 c => new
                     {
                         IdAplicacionVEDD = c.Int(nullable: false, identity: true),
@@ -250,6 +250,56 @@ namespace PAEDUCA.Migrations
                 .PrimaryKey(t => t.IdAplicacionVEDD)
                 .ForeignKey("UNI.Docente", t => t.IdDocenteEvaluado, cascadeDelete: true)
                 .Index(t => t.IdDocenteEvaluado);
+            
+            CreateTable(
+                "VEDD.AplicacionVEDDEstudiante",
+                c => new
+                    {
+                        IdAplicacionVEDDEstudiante = c.Int(nullable: false, identity: true),
+                        IdAplicacionVEDD = c.Int(nullable: false),
+                    })
+                .PrimaryKey(t => t.IdAplicacionVEDDEstudiante)
+                .ForeignKey("VEDD.AplicacionVED", t => t.IdAplicacionVEDD, cascadeDelete: true)
+                .Index(t => t.IdAplicacionVEDD);
+            
+            CreateTable(
+                "VEDD.DetalleAplicacionVEDD",
+                c => new
+                    {
+                        IdDetalleAplicacionVEDD = c.Int(nullable: false, identity: true),
+                        IdCriterioVEDD = c.Int(nullable: false),
+                        Valor = c.String(maxLength: 10),
+                        AplicacionVEDDEstudiante_IdAplicacionVEDDEstudiante = c.Int(),
+                    })
+                .PrimaryKey(t => t.IdDetalleAplicacionVEDD)
+                .ForeignKey("VEDD.AplicacionVEDDEstudiante", t => t.AplicacionVEDDEstudiante_IdAplicacionVEDDEstudiante)
+                .ForeignKey("VEDD.CriterioVEDD", t => t.IdCriterioVEDD, cascadeDelete: true)
+                .Index(t => t.IdCriterioVEDD)
+                .Index(t => t.AplicacionVEDDEstudiante_IdAplicacionVEDDEstudiante);
+            
+            CreateTable(
+                "VEDD.CriterioVEDD",
+                c => new
+                    {
+                        IdCriterioVEDD = c.Int(nullable: false, identity: true),
+                        Criterio = c.String(nullable: false, maxLength: 350),
+                        TipoVisualizacion = c.Int(nullable: false),
+                        TipoValor = c.Int(nullable: false),
+                        Estado = c.Boolean(nullable: false),
+                        IdAspectoVEDD = c.Int(nullable: false),
+                    })
+                .PrimaryKey(t => t.IdCriterioVEDD)
+                .ForeignKey("VEDD.AspectoVEDD", t => t.IdAspectoVEDD, cascadeDelete: true)
+                .Index(t => t.IdAspectoVEDD);
+            
+            CreateTable(
+                "VEDD.AspectoVEDD",
+                c => new
+                    {
+                        IdAspecto = c.Int(nullable: false, identity: true),
+                        Estado = c.Boolean(nullable: false),
+                    })
+                .PrimaryKey(t => t.IdAspecto);
             
             CreateTable(
                 "AVD.AspectoAVD",
@@ -276,7 +326,7 @@ namespace PAEDUCA.Migrations
                 .Index(t => t.IdAspectoAVD);
             
             CreateTable(
-                "dbo.DetalleAplicacionAVDs",
+                "AVD.DetalleAplicacionAVD",
                 c => new
                     {
                         IdDetalleAplicacion = c.Int(nullable: false, identity: true),
@@ -286,63 +336,10 @@ namespace PAEDUCA.Migrations
                         AplicacionAVD_IdAplicacionVEDD = c.Int(),
                     })
                 .PrimaryKey(t => t.IdDetalleAplicacion)
-                .ForeignKey("dbo.AplicacionAVDs", t => t.AplicacionAVD_IdAplicacionVEDD)
+                .ForeignKey("AVD.AplicacionAVD", t => t.AplicacionAVD_IdAplicacionVEDD)
                 .ForeignKey("AVD.CriterioAVD", t => t.IdCriterioAVD, cascadeDelete: true)
                 .Index(t => t.IdCriterioAVD)
                 .Index(t => t.AplicacionAVD_IdAplicacionVEDD);
-            
-            CreateTable(
-                "VEDD.AspectoVEDD",
-                c => new
-                    {
-                        IdAspecto = c.Int(nullable: false, identity: true),
-                        Estado = c.Boolean(nullable: false),
-                    })
-                .PrimaryKey(t => t.IdAspecto);
-            
-            CreateTable(
-                "VEDD.CriterioVEDD",
-                c => new
-                    {
-                        IdCriterioVEDD = c.Int(nullable: false, identity: true),
-                        Criterio = c.String(nullable: false, maxLength: 350),
-                        TipoVisualizacion = c.Int(nullable: false),
-                        TipoValor = c.Int(nullable: false),
-                        Estado = c.Boolean(nullable: false),
-                        IdAspectoVEDD = c.Int(nullable: false),
-                    })
-                .PrimaryKey(t => t.IdCriterioVEDD)
-                .ForeignKey("VEDD.AspectoVEDD", t => t.IdAspectoVEDD, cascadeDelete: true)
-                .Index(t => t.IdAspectoVEDD);
-            
-            CreateTable(
-                "dbo.AplicacionVEDDEstudiantes",
-                c => new
-                    {
-                        IdAplicacionVEDDEstudiante = c.Int(nullable: false, identity: true),
-                        IdAplicacionVEDD = c.Int(nullable: false),
-                        CriterioVEDD_IdCriterioVEDD = c.Int(),
-                    })
-                .PrimaryKey(t => t.IdAplicacionVEDDEstudiante)
-                .ForeignKey("VEDD.AplicacionVED", t => t.IdAplicacionVEDD, cascadeDelete: true)
-                .ForeignKey("VEDD.CriterioVEDD", t => t.CriterioVEDD_IdCriterioVEDD)
-                .Index(t => t.IdAplicacionVEDD)
-                .Index(t => t.CriterioVEDD_IdCriterioVEDD);
-            
-            CreateTable(
-                "dbo.DetalleAplicacionVEDDs",
-                c => new
-                    {
-                        IdDetalleAplicacionVEDD = c.Int(nullable: false, identity: true),
-                        IdCriterioVEDD = c.Int(nullable: false),
-                        Valor = c.String(maxLength: 10),
-                        AplicacionVEDDEstudiante_IdAplicacionVEDDEstudiante = c.Int(),
-                    })
-                .PrimaryKey(t => t.IdDetalleAplicacionVEDD)
-                .ForeignKey("dbo.AplicacionVEDDEstudiantes", t => t.AplicacionVEDDEstudiante_IdAplicacionVEDDEstudiante)
-                .ForeignKey("VEDD.CriterioVEDD", t => t.IdCriterioVEDD, cascadeDelete: true)
-                .Index(t => t.IdCriterioVEDD)
-                .Index(t => t.AplicacionVEDDEstudiante_IdAplicacionVEDDEstudiante);
             
             CreateTable(
                 "UNI.PlanificacionGeneral",
@@ -359,7 +356,7 @@ namespace PAEDUCA.Migrations
                 .Index(t => t.IdSedeFacultad);
             
             CreateTable(
-                "AAC.AplicacionAAC",
+                "AAC.ProgramacionAAC",
                 c => new
                     {
                         IdProgramacionACC = c.Int(nullable: false, identity: true),
@@ -376,7 +373,7 @@ namespace PAEDUCA.Migrations
                 .Index(t => t.DocenteEvalua_IdDocente);
             
             CreateTable(
-                "AVD.AplicacionAVD",
+                "AVD.ProgramacionAVD",
                 c => new
                     {
                         IdProgramacionAVD = c.Int(nullable: false, identity: true),
@@ -408,22 +405,21 @@ namespace PAEDUCA.Migrations
         public override void Down()
         {
             DropForeignKey("VEDD.ProgramacionVEDD", "IdCurso", "UNI.Curso");
-            DropForeignKey("AVD.AplicacionAVD", "IdDocente", "UNI.Docente");
-            DropForeignKey("AAC.AplicacionAAC", "DocenteEvalua_IdDocente", "UNI.Docente");
-            DropForeignKey("AAC.AplicacionAAC", "DocenteAcompañante_IdDocente", "UNI.Docente");
+            DropForeignKey("AVD.ProgramacionAVD", "IdDocente", "UNI.Docente");
+            DropForeignKey("AAC.ProgramacionAAC", "DocenteEvalua_IdDocente", "UNI.Docente");
+            DropForeignKey("AAC.ProgramacionAAC", "DocenteAcompañante_IdDocente", "UNI.Docente");
             DropForeignKey("UNI.PlanificacionGeneral", "IdSedeFacultad", "UNI.SedeFacultad");
-            DropForeignKey("VEDD.CriterioVEDD", "IdAspectoVEDD", "VEDD.AspectoVEDD");
-            DropForeignKey("dbo.AplicacionVEDDEstudiantes", "CriterioVEDD_IdCriterioVEDD", "VEDD.CriterioVEDD");
-            DropForeignKey("dbo.DetalleAplicacionVEDDs", "IdCriterioVEDD", "VEDD.CriterioVEDD");
-            DropForeignKey("dbo.DetalleAplicacionVEDDs", "AplicacionVEDDEstudiante_IdAplicacionVEDDEstudiante", "dbo.AplicacionVEDDEstudiantes");
-            DropForeignKey("dbo.AplicacionVEDDEstudiantes", "IdAplicacionVEDD", "VEDD.AplicacionVED");
-            DropForeignKey("dbo.DetalleAplicacionAVDs", "IdCriterioAVD", "AVD.CriterioAVD");
-            DropForeignKey("dbo.DetalleAplicacionAVDs", "AplicacionAVD_IdAplicacionVEDD", "dbo.AplicacionAVDs");
+            DropForeignKey("AVD.DetalleAplicacionAVD", "IdCriterioAVD", "AVD.CriterioAVD");
+            DropForeignKey("AVD.DetalleAplicacionAVD", "AplicacionAVD_IdAplicacionVEDD", "AVD.AplicacionAVD");
             DropForeignKey("AVD.CriterioAVD", "IdAspectoAVD", "AVD.AspectoAVD");
+            DropForeignKey("VEDD.DetalleAplicacionVEDD", "IdCriterioVEDD", "VEDD.CriterioVEDD");
+            DropForeignKey("VEDD.CriterioVEDD", "IdAspectoVEDD", "VEDD.AspectoVEDD");
+            DropForeignKey("VEDD.DetalleAplicacionVEDD", "AplicacionVEDDEstudiante_IdAplicacionVEDDEstudiante", "VEDD.AplicacionVEDDEstudiante");
+            DropForeignKey("VEDD.AplicacionVEDDEstudiante", "IdAplicacionVEDD", "VEDD.AplicacionVED");
             DropForeignKey("VEDD.AplicacionVED", "IdDocenteEvaluado", "UNI.Docente");
-            DropForeignKey("dbo.AplicacionAVDs", "IdDocenteEvaluado", "UNI.Docente");
-            DropForeignKey("dbo.AplicacionAACs", "DocenteEvaluado_IdDocente", "UNI.Docente");
-            DropForeignKey("dbo.AplicacionAACs", "DocenteAcompañante_IdDocente", "UNI.Docente");
+            DropForeignKey("AVD.AplicacionAVD", "IdDocenteEvaluado", "UNI.Docente");
+            DropForeignKey("AAC.AplicacionAAC", "DocenteEvaluado_IdDocente", "UNI.Docente");
+            DropForeignKey("AAC.AplicacionAAC", "DocenteAcompañante_IdDocente", "UNI.Docente");
             DropForeignKey("UNI.Docente", "IdDepartamentoCoordinacion", "UNI.DepartamentoCoordinacion");
             DropForeignKey("UNI.DepartamentoCoordinacion", "IdSedeFacultad", "UNI.SedeFacultad");
             DropForeignKey("UNI.SedeFacultad", "IdRecinto", "UNI.Recinto");
@@ -433,28 +429,27 @@ namespace PAEDUCA.Migrations
             DropForeignKey("UNI.DocenteCurso", "Docente_IdDocente", "UNI.Docente");
             DropForeignKey("UNI.DocenteCurso", "Curso_IdCurso", "UNI.Curso");
             DropForeignKey("UNI.Curso", "IdAsignatura", "UNI.Asignatura");
-            DropForeignKey("UNI.CarreraAsignatura", "IdCarrera", "dbo.Carreras");
+            DropForeignKey("UNI.CarreraAsignatura", "IdCarrera", "UNI.Carrera");
             DropForeignKey("UNI.CarreraAsignatura", "IdAsignatura", "UNI.Asignatura");
             DropForeignKey("UNI.Grupo", "IdCarreraSedeFacultad", "UNI.CarreraSedeFacultad");
-            DropForeignKey("UNI.CarreraSedeFacultad", "IdCarrera", "dbo.Carreras");
+            DropForeignKey("UNI.CarreraSedeFacultad", "IdCarrera", "UNI.Carrera");
             DropForeignKey("AAC.DetalleAplicacionAAC", "CriterioAAC_IdCriterioACC", "AAC.CriterioAAC");
             DropForeignKey("AAC.CriterioAAC", "AspectoAAC_IdAspectoACC", "AAC.AspectoAAC");
-            DropForeignKey("AAC.DetalleAplicacionAAC", "AplicacionAAC_IdAplicacionaACC", "dbo.AplicacionAACs");
+            DropForeignKey("AAC.DetalleAplicacionAAC", "AplicacionAAC_IdAplicacionaACC", "AAC.AplicacionAAC");
             DropIndex("VEDD.ProgramacionVEDD", new[] { "IdCurso" });
-            DropIndex("AVD.AplicacionAVD", new[] { "IdDocente" });
-            DropIndex("AAC.AplicacionAAC", new[] { "DocenteEvalua_IdDocente" });
-            DropIndex("AAC.AplicacionAAC", new[] { "DocenteAcompañante_IdDocente" });
+            DropIndex("AVD.ProgramacionAVD", new[] { "IdDocente" });
+            DropIndex("AAC.ProgramacionAAC", new[] { "DocenteEvalua_IdDocente" });
+            DropIndex("AAC.ProgramacionAAC", new[] { "DocenteAcompañante_IdDocente" });
             DropIndex("UNI.PlanificacionGeneral", new[] { "IdSedeFacultad" });
-            DropIndex("dbo.DetalleAplicacionVEDDs", new[] { "AplicacionVEDDEstudiante_IdAplicacionVEDDEstudiante" });
-            DropIndex("dbo.DetalleAplicacionVEDDs", new[] { "IdCriterioVEDD" });
-            DropIndex("dbo.AplicacionVEDDEstudiantes", new[] { "CriterioVEDD_IdCriterioVEDD" });
-            DropIndex("dbo.AplicacionVEDDEstudiantes", new[] { "IdAplicacionVEDD" });
-            DropIndex("VEDD.CriterioVEDD", new[] { "IdAspectoVEDD" });
-            DropIndex("dbo.DetalleAplicacionAVDs", new[] { "AplicacionAVD_IdAplicacionVEDD" });
-            DropIndex("dbo.DetalleAplicacionAVDs", new[] { "IdCriterioAVD" });
+            DropIndex("AVD.DetalleAplicacionAVD", new[] { "AplicacionAVD_IdAplicacionVEDD" });
+            DropIndex("AVD.DetalleAplicacionAVD", new[] { "IdCriterioAVD" });
             DropIndex("AVD.CriterioAVD", new[] { "IdAspectoAVD" });
+            DropIndex("VEDD.CriterioVEDD", new[] { "IdAspectoVEDD" });
+            DropIndex("VEDD.DetalleAplicacionVEDD", new[] { "AplicacionVEDDEstudiante_IdAplicacionVEDDEstudiante" });
+            DropIndex("VEDD.DetalleAplicacionVEDD", new[] { "IdCriterioVEDD" });
+            DropIndex("VEDD.AplicacionVEDDEstudiante", new[] { "IdAplicacionVEDD" });
             DropIndex("VEDD.AplicacionVED", new[] { "IdDocenteEvaluado" });
-            DropIndex("dbo.AplicacionAVDs", new[] { "IdDocenteEvaluado" });
+            DropIndex("AVD.AplicacionAVD", new[] { "IdDocenteEvaluado" });
             DropIndex("UNI.Recinto", new[] { "IdUniversidad" });
             DropIndex("UNI.DocenteCurso", new[] { "Docente_IdDocente" });
             DropIndex("UNI.DocenteCurso", new[] { "Curso_IdCurso" });
@@ -471,21 +466,21 @@ namespace PAEDUCA.Migrations
             DropIndex("AAC.CriterioAAC", new[] { "AspectoAAC_IdAspectoACC" });
             DropIndex("AAC.DetalleAplicacionAAC", new[] { "CriterioAAC_IdCriterioACC" });
             DropIndex("AAC.DetalleAplicacionAAC", new[] { "AplicacionAAC_IdAplicacionaACC" });
-            DropIndex("dbo.AplicacionAACs", new[] { "DocenteEvaluado_IdDocente" });
-            DropIndex("dbo.AplicacionAACs", new[] { "DocenteAcompañante_IdDocente" });
+            DropIndex("AAC.AplicacionAAC", new[] { "DocenteEvaluado_IdDocente" });
+            DropIndex("AAC.AplicacionAAC", new[] { "DocenteAcompañante_IdDocente" });
             DropTable("VEDD.ProgramacionVEDD");
-            DropTable("AVD.AplicacionAVD");
-            DropTable("AAC.AplicacionAAC");
+            DropTable("AVD.ProgramacionAVD");
+            DropTable("AAC.ProgramacionAAC");
             DropTable("UNI.PlanificacionGeneral");
-            DropTable("dbo.DetalleAplicacionVEDDs");
-            DropTable("dbo.AplicacionVEDDEstudiantes");
-            DropTable("VEDD.CriterioVEDD");
-            DropTable("VEDD.AspectoVEDD");
-            DropTable("dbo.DetalleAplicacionAVDs");
+            DropTable("AVD.DetalleAplicacionAVD");
             DropTable("AVD.CriterioAVD");
             DropTable("AVD.AspectoAVD");
+            DropTable("VEDD.AspectoVEDD");
+            DropTable("VEDD.CriterioVEDD");
+            DropTable("VEDD.DetalleAplicacionVEDD");
+            DropTable("VEDD.AplicacionVEDDEstudiante");
             DropTable("VEDD.AplicacionVED");
-            DropTable("dbo.AplicacionAVDs");
+            DropTable("AVD.AplicacionAVD");
             DropTable("UNI.Universidad");
             DropTable("UNI.Recinto");
             DropTable("UNI.DocenteCurso");
@@ -493,7 +488,7 @@ namespace PAEDUCA.Migrations
             DropTable("UNI.Asignatura");
             DropTable("UNI.Curso");
             DropTable("UNI.Grupo");
-            DropTable("dbo.Carreras");
+            DropTable("UNI.Carrera");
             DropTable("UNI.CarreraSedeFacultad");
             DropTable("UNI.SedeFacultad");
             DropTable("UNI.DepartamentoCoordinacion");
@@ -501,7 +496,7 @@ namespace PAEDUCA.Migrations
             DropTable("AAC.AspectoAAC");
             DropTable("AAC.CriterioAAC");
             DropTable("AAC.DetalleAplicacionAAC");
-            DropTable("dbo.AplicacionAACs");
+            DropTable("AAC.AplicacionAAC");
         }
     }
 }
