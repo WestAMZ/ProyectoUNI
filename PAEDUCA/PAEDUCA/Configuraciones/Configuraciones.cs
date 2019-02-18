@@ -5,7 +5,7 @@ using System.Web;
 // ------------
 // Archivo de configuraciones generales de variables globales
 //------------
-namespace PAEDUCA.Controllers.AppConfigs
+namespace PAEDUCA.Controllers.Configuraciones
 {
     public class Configuraciones
     {
