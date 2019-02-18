@@ -9,7 +9,6 @@ namespace PAEDUCA.Models
 {
     public class SedeFacultad
     {
-        public enum ValorTipo { Sede,Facultad}
         [Key]
         public int IdSedeFacultad { set; get; }
         [Required,StringLength(200)]
