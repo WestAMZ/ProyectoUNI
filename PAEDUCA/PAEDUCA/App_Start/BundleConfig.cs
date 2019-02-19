@@ -28,10 +28,13 @@ namespace PAEDUCA
                       "~/Content/site.css"));
 
             //Bundle Robust
-            StyleBundle css_robust = new StyleBundle("~/Content/css");
-            css_robust.Include("~/Content/css_robust/app.min.css");
+            bundles.Add(new StyleBundle("~/Content/css_robust").Include
+                (
+                "~/Content/css_robust/app.min.css",
+                "~/Content/css_robust/bootstrap-extended.min.css",
+                "~/Content/css_robust/colors.min.css"));
 
-            bundles.Add(css_robust);
+            
         }
     }
 }
