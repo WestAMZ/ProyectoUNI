@@ -24,6 +24,18 @@ namespace PAEDUCA.DAL
             };
             universidades.ForEach(u => context.Universidades.Add(u));
             context.SaveChanges();
+
+            var Facultades = new List<SedeFacultad>
+            {
+                new SedeFacultad {Nombre = "Facultad de Ciencias y Sistemas" ,IdRecinto = 2 ,Tipo = ValorTipo.Facultad ,Web ="http://www.fcys.uni.edu.ni"},
+                new SedeFacultad {Nombre = "Facultad de Tecnología de la Industria" ,IdRecinto = 2 ,Tipo = ValorTipo.Facultad ,Web ="http://www.fti.uni.edu.ni"}
+            };
+            var departamentos = new List<DepartamentoCoordinacion>
+            {
+                new DepartamentoCoordinacion {IdSedeFacultad = 2,Nombre = "Informática" ,Tipo = TipoDivision.Departamento},
+                new DepartamentoCoordinacion {IdSedeFacultad = 2,Nombre = "Informática" ,Tipo = TipoDivision.Departamento},
+                new DepartamentoCoordinacion {IdSedeFacultad = 2,Nombre = "Informática" ,Tipo = TipoDivision.Departamento},
+            };
         }
     }
 }

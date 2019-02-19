@@ -9,7 +9,7 @@ namespace PAEDUCA.Models
 {
     public class DepartamentoCoordinacion
     {
-        public enum TipoDivision {Departamento,Coordinacion}
+        
         [Key]
         public int IdDepartamentoCoordinacion { set; get; }
         [StringLength(200)]
