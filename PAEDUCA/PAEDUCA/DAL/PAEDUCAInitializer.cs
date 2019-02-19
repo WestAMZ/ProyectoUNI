@@ -5,9 +5,9 @@ using System.Web;
 using PAEDUCA.Models;
 namespace PAEDUCA.DAL
 {
-    public class PAEDUCAInitializer : System.Data.Entity.DropCreateDatabaseIfModelChanges<PAEDUCAContext>
+    public class PAEDUCAInitializer : System.Data.Entity.DropCreateDatabaseIfModelChanges<ApplicationDbContext>
     {
-        protected override void Seed(PAEDUCAContext context)
+        protected override void Seed(ApplicationDbContext context)
         {
             var universidades = new List<Universidad>
             {
