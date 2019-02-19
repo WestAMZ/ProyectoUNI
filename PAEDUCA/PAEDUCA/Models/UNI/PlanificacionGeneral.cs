@@ -12,7 +12,8 @@ namespace PAEDUCA.Models
         [Key]
         public int IdPlanificacion { set; get; }
         //Creado por
-        public string Semestre { set; get; }
+        public int Anio { set; get; }
+        public Semestre Semestre { set; get; }
         public DateTime FechaCreacion { set; get; }
         public DateTime FechaFin { set; get; }
         //Nota : sujeto a cambiarse por una 3ra tabla carrera fac

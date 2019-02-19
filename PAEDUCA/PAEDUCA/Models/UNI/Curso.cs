@@ -15,7 +15,8 @@ namespace PAEDUCA.Models
         public int IdGrupo { set; get; }
         [ForeignKey("Asignatura")]
         public int IdAsignatura { set; get; }
-        public string Semestre { set; get; }
+        public Semestre Semestre { set; get; }
+        public int Anio { set; get; }
         public string Estado { set; get; }
 
         public virtual Grupo Grupo { set; get; }

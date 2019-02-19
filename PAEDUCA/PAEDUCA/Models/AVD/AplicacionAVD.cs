@@ -12,8 +12,8 @@ namespace PAEDUCA.Models
         [Key]
         public int IdAplicacionVEDD { set; get; }
         public DateTime FechaAplicacion { set; get; }
-        [ForeignKey("Docente")]
-        public int IdDocenteEvaluado { set; get; }
-        public virtual Docente Docente { set; get; }
+        [ForeignKey("ProgramacionAVD")]
+        public int IdProgramacionAVD { set; get; }
+        public virtual ProgramacionAVD ProgramacionAVD { set; get; }
     }
 }

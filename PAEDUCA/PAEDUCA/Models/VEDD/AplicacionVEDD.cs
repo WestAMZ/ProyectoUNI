@@ -12,10 +12,10 @@ namespace PAEDUCA.Models
         [Key]
         public int IdAplicacionVEDD { set; get; }
         public DateTime FechaAplicacion { set; get; }
-        [ForeignKey("Docente")]
-        public int IdDocenteEvaluado {set;get;}
-        [Column("IdDocenteEvaluado")]
-        public virtual Docente Docente { set; get; }
+        [ForeignKey("ProgramacionVEDD")]
+        public int IdProgramacionVEDD { set;get;}
+        [Column("IdProgramacionVEDD")]
+        public virtual ProgramacionVEDD ProgramacionVEDD { set; get; }
 
     }
 }

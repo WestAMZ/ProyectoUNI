@@ -10,6 +10,8 @@ namespace PAEDUCA.Models
     {
         [Key]
         public int IdAspecto { set; get; }
+        [StringLength(150)]
+        public string Nombre { set; get; }
         public Boolean Estado { set; get; }
         public virtual ICollection<CriterioVEDD> CriteriosVED { set; get; }
     }

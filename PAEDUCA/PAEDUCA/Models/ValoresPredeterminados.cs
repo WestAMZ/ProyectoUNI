@@ -13,4 +13,5 @@ namespace PAEDUCA.Models
     { SiNo, _1a5, Libre}
     public enum TipoDivision { Departamento, Coordinacion }
     public enum ValorTipo { Sede, Facultad }
+    public enum Semestre { Primero, Segundo }
 }
