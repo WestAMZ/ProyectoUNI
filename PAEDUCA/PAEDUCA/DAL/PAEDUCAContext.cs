@@ -10,7 +10,7 @@
     {
    
         public PAEDUCAContext()
-            : base("Name=Westly")
+            : base("Name=MS")
         //: base(new Conexion().conexion)
         {
 
@@ -36,7 +36,8 @@
         public virtual DbSet<CriterioVEDD> CriterioVEDD { set; get; }
         public virtual DbSet<ProgramacionVEDD> ProgramacionVEDD { set; get; }
         public virtual DbSet<AplicacionVEDD> AplicacionVEDD { set; get; }
-
+        public virtual DbSet<AplicacionVEDDEstudiante> AplicacionVEDDEstudiante { set; get; }
+        public virtual DbSet<DetalleAplicacionVEDD> DetalleAplicacionVEDD { set; get; }
         //AVD
         public virtual DbSet<AspectoAVD> AspectoAVD { set; get; }
         public virtual DbSet<CriterioAVD> CriterioAVD { set; get; }
@@ -62,6 +63,7 @@
             modelBuilder.Entity<Universidad>().ToTable(tableName:"Universidad",schemaName:"UNI");
             modelBuilder.Entity<Recinto>().ToTable(tableName: "Recinto", schemaName: "UNI");
             modelBuilder.Entity<SedeFacultad>().ToTable(tableName: "SedeFacultad", schemaName: "UNI");
+            modelBuilder.Entity<Carrera>().ToTable(tableName: "Carrera", schemaName: "UNI");
             modelBuilder.Entity<Docente>().ToTable(tableName: "Docente", schemaName: "UNI");
             modelBuilder.Entity<DepartamentoCoordinacion>().ToTable(tableName: "DepartamentoCoordinacion", schemaName: "UNI");
             modelBuilder.Entity<CarreraSedeFacultad>().ToTable(tableName: "CarreraSedeFacultad", schemaName: "UNI");
@@ -77,18 +79,19 @@
             modelBuilder.Entity<CriterioVEDD>().ToTable(tableName: "CriterioVEDD", schemaName: "VEDD");
             modelBuilder.Entity<ProgramacionVEDD>().ToTable(tableName: "ProgramacionVEDD", schemaName: "VEDD");
             modelBuilder.Entity<AplicacionVEDD>().ToTable(tableName: "AplicacionVED", schemaName: "VEDD");
-
+            modelBuilder.Entity<AplicacionVEDDEstudiante>().ToTable(tableName: "AplicacionVEDDEstudiante", schemaName: "VEDD");
+            modelBuilder.Entity<DetalleAplicacionVEDD>().ToTable(tableName: "DetalleAplicacionVEDD", schemaName: "VEDD");
             //Tablas AVD
             modelBuilder.Entity<AspectoAVD>().ToTable(tableName: "AspectoAVD", schemaName: "AVD");
             modelBuilder.Entity<CriterioAVD>().ToTable(tableName: "CriterioAVD", schemaName: "AVD");
             modelBuilder.Entity<ProgramacionAVD>().ToTable(tableName: "ProgramacionAVD", schemaName: "AVD");
-            modelBuilder.Entity<ProgramacionAVD>().ToTable(tableName: "AplicacionAVD", schemaName: "AVD");
-
+            modelBuilder.Entity<AplicacionAVD>().ToTable(tableName: "AplicacionAVD", schemaName: "AVD");
+            modelBuilder.Entity<DetalleAplicacionAVD>().ToTable(tableName: "DetalleAplicacionAVD", schemaName: "AVD");
             //Tablas AAC
             modelBuilder.Entity<AspectoAAC>().ToTable(tableName: "AspectoAAC", schemaName: "AAC");
             modelBuilder.Entity<CriterioAAC>().ToTable(tableName: "CriterioAAC", schemaName: "AAC");
             modelBuilder.Entity<ProgramacionAAC>().ToTable(tableName: "ProgramacionAAC", schemaName: "AAC");
-            modelBuilder.Entity<ProgramacionAAC>().ToTable(tableName: "AplicacionAAC", schemaName: "AAC");
+            modelBuilder.Entity<AplicacionAAC>().ToTable(tableName: "AplicacionAAC", schemaName: "AAC");
             modelBuilder.Entity<DetalleAplicacionAAC>().ToTable(tableName: "DetalleAplicacionAAC", schemaName: "AAC");
             //Map entity to table
             //modelBuilder.Entity<Universidad>().Map(m =>
