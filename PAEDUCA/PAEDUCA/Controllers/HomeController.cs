@@ -26,11 +26,5 @@ namespace PAEDUCA.Controllers
 
             return View();
         }
-        public ActionResult PanelControl()
-        {
-            ViewBag.Message = "PAEDUCA - Inicio";
-
-            return View();
-        }
     }
 }
