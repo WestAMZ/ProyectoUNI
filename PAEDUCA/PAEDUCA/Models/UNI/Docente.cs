@@ -15,8 +15,7 @@ namespace PAEDUCA.Models
         public string Nombres { set; get; }
         [StringLength(40)]
         public string Apellidos { set; get; } 
-        [StringLength(10)]
-        public string Sexo { set; get; }
+        public Sexo Sexo { set; get; }
         [StringLength(30)]
         public string TipoContratacion { set; get; }
         [StringLength(30)]
