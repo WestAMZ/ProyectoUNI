@@ -7,21 +7,19 @@ using System.Web;
 
 namespace PAEDUCA.Models
 {
-    public class CriterioAVD
+    public class CriterioAVD:Criterio
     {
         [Key]
-        public int IdCriterioAvd { get; set; }
-        [Required,StringLength(350)]
-        public string Criterio { get; set; }
-        [DisplayFormat(NullDisplayText = "Seleccione Visualización")]
-        public TipoVisualizacion TipoVisauilzacion { get; set; }
-        [DisplayFormat(NullDisplayText = "Seleccione Visualización")]
-        public TipoValor TipoValor { get; set; }
-        public Boolean Estado { get; set; }
-
+        public int IdCriterioAVD { get; set; }
         [ForeignKey("AspectoAVD")]
         public int IdAspectoAVD { get; set; }
         public virtual AspectoAVD AspectoAVD { get; set; }
         public virtual ICollection<DetalleAplicacionAVD> DetalleAplicacionAVD { set; get; }
+
+        override
+        public int getId()
+        {
+            return IdCriterioAVD;
+        }
     }
 }

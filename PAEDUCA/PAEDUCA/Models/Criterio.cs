@@ -15,5 +15,10 @@ namespace PAEDUCA.Models
         [DisplayFormat(NullDisplayText = "Seleccione Visualización")]
         public TipoValor TipoValor { get; set; }
         public Boolean Estado { get; set; }
+
+        public virtual int getId()
+        {
+            return -1;
+        }
     }
 }

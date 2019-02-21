@@ -13,5 +13,11 @@ namespace PAEDUCA.Models
         public int IdAspectoAAC { set; get; }
         public virtual AspectoAAC AspectoAAC { set; get; }
         public virtual ICollection<DetalleAplicacionAAC> DetalleAplicacionAAC { set; get; }
+
+        override
+        public  int getId()
+        {
+            return IdCriterioACC;
+        }
     }
 }

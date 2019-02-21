@@ -15,5 +15,11 @@ namespace PAEDUCA.Models
         public int IdAspectoVEDD { set; get; }
         public virtual AspectoVEDD AspectoVED { set; get; }
         public virtual ICollection<DetalleAplicacionVEDD> DetalleAplicacionVEDD { set;get;}
+
+        override
+        public int getId()
+        {
+            return IdCriterioVEDD;
+        }
     }
 }

@@ -68,6 +68,26 @@ namespace PAEDUCA.DAL
             };
             asignaturas.ForEach(a => context.Asignatura.Add(a));
             context.SaveChanges();
+
+
+            //Inserciones AAC
+
+            var AspectosAAC = new List<AspectoAAC>
+            {
+                new AspectoAAC {Nombre = "Organizativo" ,Estado = true},
+                new AspectoAAC {Nombre = "Desarrollo / Metodológico" ,Estado = true},
+                new AspectoAAC {Nombre = "Evaluación" ,Estado = true},
+                new AspectoAAC {Nombre = "Relación con el grupo de clases" ,Estado = true}
+            };
+            AspectosAAC[1].CriterioACC = new List<CriterioAAC>
+            {
+                new CriterioAAC
+                {
+                    Nombre = "Entregó el plan calendaio de la asignatura en el tiempo establecido",
+                    TipoValor = TipoValor.SiNo,
+                    TipoVisualizacion = TipoVisualizacion.RadioButton
+                }
+            };
         }
     }
 }

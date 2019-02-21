@@ -14,6 +14,9 @@ namespace PAEDUCA.Models
         public DateTime FechaAplicacion { set; get; }
         public TimeSpan  HoraInicio { set; get; }
         public TimeSpan HoraFin { set; get; }
+        public int IdPlanificacionGeneral { set; get; }
+        [Column("IdPlanificacionGeneral")]
+        public PlanificacionGeneral PlanificacionGeneral { set; get; }
         [ForeignKey("Curso")]
         public int IdCurso { set; get; }
         public Curso Curso { set; get; }

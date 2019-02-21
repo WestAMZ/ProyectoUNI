@@ -3,7 +3,7 @@ namespace PAEDUCA.Migrations
     using System;
     using System.Data.Entity.Migrations;
     
-    public partial class inicial : DbMigration
+    public partial class Inicial : DbMigration
     {
         public override void Up()
         {
@@ -46,7 +46,7 @@ namespace PAEDUCA.Migrations
                         IdCriterioACC = c.Int(nullable: false, identity: true),
                         IdAspectoAAC = c.Int(nullable: false),
                         Nombre = c.String(nullable: false, maxLength: 350),
-                        TipoVisauilzacion = c.Int(nullable: false),
+                        TipoVisualizacion = c.Int(nullable: false),
                         TipoValor = c.Int(nullable: false),
                         Estado = c.Boolean(nullable: false),
                         AspectoAAC_IdAspectoACC = c.Int(),
@@ -248,11 +248,30 @@ namespace PAEDUCA.Migrations
                         FechaAplicacion = c.DateTime(nullable: false),
                         HoraInicio = c.Time(nullable: false, precision: 7),
                         HoraFin = c.Time(nullable: false, precision: 7),
+                        IdPlanificacionGeneral = c.Int(nullable: false),
                         IdDocente = c.Int(nullable: false),
+                        PlanificacionGeneral_IdPlanificacion = c.Int(),
                     })
                 .PrimaryKey(t => t.IdProgramacionAVD)
                 .ForeignKey("UNI.Docente", t => t.IdDocente, cascadeDelete: true)
-                .Index(t => t.IdDocente);
+                .ForeignKey("UNI.PlanificacionGeneral", t => t.PlanificacionGeneral_IdPlanificacion)
+                .Index(t => t.IdDocente)
+                .Index(t => t.PlanificacionGeneral_IdPlanificacion);
+            
+            CreateTable(
+                "UNI.PlanificacionGeneral",
+                c => new
+                    {
+                        IdPlanificacion = c.Int(nullable: false, identity: true),
+                        Anio = c.Int(nullable: false),
+                        Semestre = c.Int(nullable: false),
+                        FechaCreacion = c.DateTime(nullable: false),
+                        FechaFin = c.DateTime(nullable: false),
+                        IdSedeFacultad = c.Int(nullable: false),
+                    })
+                .PrimaryKey(t => t.IdPlanificacion)
+                .ForeignKey("UNI.SedeFacultad", t => t.IdSedeFacultad, cascadeDelete: true)
+                .Index(t => t.IdSedeFacultad);
             
             CreateTable(
                 "VEDD.AplicacionVED",
@@ -274,11 +293,15 @@ namespace PAEDUCA.Migrations
                         FechaAplicacion = c.DateTime(nullable: false),
                         HoraInicio = c.Time(nullable: false, precision: 7),
                         HoraFin = c.Time(nullable: false, precision: 7),
+                        IdPlanificacionGeneral = c.Int(nullable: false),
                         IdCurso = c.Int(nullable: false),
+                        PlanificacionGeneral_IdPlanificacion = c.Int(),
                     })
                 .PrimaryKey(t => t.IdProgramacionVED)
                 .ForeignKey("UNI.Curso", t => t.IdCurso, cascadeDelete: true)
-                .Index(t => t.IdCurso);
+                .ForeignKey("UNI.PlanificacionGeneral", t => t.PlanificacionGeneral_IdPlanificacion)
+                .Index(t => t.IdCurso)
+                .Index(t => t.PlanificacionGeneral_IdPlanificacion);
             
             CreateTable(
                 "VEDD.AplicacionVEDDEstudiante",
@@ -311,11 +334,11 @@ namespace PAEDUCA.Migrations
                 c => new
                     {
                         IdCriterioVEDD = c.Int(nullable: false, identity: true),
-                        Criterio = c.String(nullable: false, maxLength: 350),
+                        IdAspectoVEDD = c.Int(nullable: false),
+                        Nombre = c.String(nullable: false, maxLength: 350),
                         TipoVisualizacion = c.Int(nullable: false),
                         TipoValor = c.Int(nullable: false),
                         Estado = c.Boolean(nullable: false),
-                        IdAspectoVEDD = c.Int(nullable: false),
                     })
                 .PrimaryKey(t => t.IdCriterioVEDD)
                 .ForeignKey("VEDD.AspectoVEDD", t => t.IdAspectoVEDD, cascadeDelete: true)
@@ -345,14 +368,14 @@ namespace PAEDUCA.Migrations
                 "AVD.CriterioAVD",
                 c => new
                     {
-                        IdCriterioAvd = c.Int(nullable: false, identity: true),
-                        Criterio = c.String(nullable: false, maxLength: 350),
-                        TipoVisauilzacion = c.Int(nullable: false),
+                        IdCriterioAVD = c.Int(nullable: false, identity: true),
+                        IdAspectoAVD = c.Int(nullable: false),
+                        Nombre = c.String(nullable: false, maxLength: 350),
+                        TipoVisualizacion = c.Int(nullable: false),
                         TipoValor = c.Int(nullable: false),
                         Estado = c.Boolean(nullable: false),
-                        IdAspectoAVD = c.Int(nullable: false),
                     })
-                .PrimaryKey(t => t.IdCriterioAvd)
+                .PrimaryKey(t => t.IdCriterioAVD)
                 .ForeignKey("AVD.AspectoAVD", t => t.IdAspectoAVD, cascadeDelete: true)
                 .Index(t => t.IdAspectoAVD);
             
@@ -373,21 +396,6 @@ namespace PAEDUCA.Migrations
                 .Index(t => t.AplicacionAVD_IdAplicacionVEDD);
             
             CreateTable(
-                "UNI.PlanificacionGeneral",
-                c => new
-                    {
-                        IdPlanificacion = c.Int(nullable: false, identity: true),
-                        Anio = c.Int(nullable: false),
-                        Semestre = c.Int(nullable: false),
-                        FechaCreacion = c.DateTime(nullable: false),
-                        FechaFin = c.DateTime(nullable: false),
-                        IdSedeFacultad = c.Int(nullable: false),
-                    })
-                .PrimaryKey(t => t.IdPlanificacion)
-                .ForeignKey("UNI.SedeFacultad", t => t.IdSedeFacultad, cascadeDelete: true)
-                .Index(t => t.IdSedeFacultad);
-            
-            CreateTable(
                 "AAC.ProgramacionAAC",
                 c => new
                     {
@@ -395,14 +403,18 @@ namespace PAEDUCA.Migrations
                         FechaAplicacion = c.DateTime(nullable: false),
                         HoraInicio = c.Time(nullable: false, precision: 7),
                         HoraFin = c.Time(nullable: false, precision: 7),
-                        DocenteAcompañante_IdDocente = c.Int(),
-                        DocenteEvalua_IdDocente = c.Int(),
+                        IdPlanificacionGeneral = c.Int(nullable: false),
+                        DocenteAcompanante_IdDocente = c.Int(),
+                        DocenteEvaluado_IdDocente = c.Int(),
+                        PlanificacionGeneral_IdPlanificacion = c.Int(),
                     })
                 .PrimaryKey(t => t.IdProgramacionACC)
-                .ForeignKey("UNI.Docente", t => t.DocenteAcompañante_IdDocente)
-                .ForeignKey("UNI.Docente", t => t.DocenteEvalua_IdDocente)
-                .Index(t => t.DocenteAcompañante_IdDocente)
-                .Index(t => t.DocenteEvalua_IdDocente);
+                .ForeignKey("UNI.Docente", t => t.DocenteAcompanante_IdDocente)
+                .ForeignKey("UNI.Docente", t => t.DocenteEvaluado_IdDocente)
+                .ForeignKey("UNI.PlanificacionGeneral", t => t.PlanificacionGeneral_IdPlanificacion)
+                .Index(t => t.DocenteAcompanante_IdDocente)
+                .Index(t => t.DocenteEvaluado_IdDocente)
+                .Index(t => t.PlanificacionGeneral_IdPlanificacion);
             
             CreateTable(
                 "dbo.AspNetRoles",
@@ -480,9 +492,9 @@ namespace PAEDUCA.Migrations
             DropForeignKey("dbo.AspNetUserLogins", "UserId", "dbo.AspNetUsers");
             DropForeignKey("dbo.AspNetUserClaims", "UserId", "dbo.AspNetUsers");
             DropForeignKey("dbo.AspNetUserRoles", "RoleId", "dbo.AspNetRoles");
-            DropForeignKey("AAC.ProgramacionAAC", "DocenteEvalua_IdDocente", "UNI.Docente");
-            DropForeignKey("AAC.ProgramacionAAC", "DocenteAcompañante_IdDocente", "UNI.Docente");
-            DropForeignKey("UNI.PlanificacionGeneral", "IdSedeFacultad", "UNI.SedeFacultad");
+            DropForeignKey("AAC.ProgramacionAAC", "PlanificacionGeneral_IdPlanificacion", "UNI.PlanificacionGeneral");
+            DropForeignKey("AAC.ProgramacionAAC", "DocenteEvaluado_IdDocente", "UNI.Docente");
+            DropForeignKey("AAC.ProgramacionAAC", "DocenteAcompanante_IdDocente", "UNI.Docente");
             DropForeignKey("AVD.DetalleAplicacionAVD", "IdCriterioAVD", "AVD.CriterioAVD");
             DropForeignKey("AVD.DetalleAplicacionAVD", "AplicacionAVD_IdAplicacionVEDD", "AVD.AplicacionAVD");
             DropForeignKey("AVD.CriterioAVD", "IdAspectoAVD", "AVD.AspectoAVD");
@@ -491,8 +503,11 @@ namespace PAEDUCA.Migrations
             DropForeignKey("VEDD.DetalleAplicacionVEDD", "AplicacionVEDDEstudiante_IdAplicacionVEDDEstudiante", "VEDD.AplicacionVEDDEstudiante");
             DropForeignKey("VEDD.AplicacionVEDDEstudiante", "IdAplicacionVEDD", "VEDD.AplicacionVED");
             DropForeignKey("VEDD.AplicacionVED", "IdProgramacionVEDD", "VEDD.ProgramacionVEDD");
+            DropForeignKey("VEDD.ProgramacionVEDD", "PlanificacionGeneral_IdPlanificacion", "UNI.PlanificacionGeneral");
             DropForeignKey("VEDD.ProgramacionVEDD", "IdCurso", "UNI.Curso");
             DropForeignKey("AVD.AplicacionAVD", "IdProgramacionAVD", "AVD.ProgramacionAVD");
+            DropForeignKey("AVD.ProgramacionAVD", "PlanificacionGeneral_IdPlanificacion", "UNI.PlanificacionGeneral");
+            DropForeignKey("UNI.PlanificacionGeneral", "IdSedeFacultad", "UNI.SedeFacultad");
             DropForeignKey("AVD.ProgramacionAVD", "IdDocente", "UNI.Docente");
             DropForeignKey("AAC.AplicacionAAC", "DocenteEvaluado_IdDocente", "UNI.Docente");
             DropForeignKey("AAC.AplicacionAAC", "DocenteAcompañante_IdDocente", "UNI.Docente");
@@ -518,9 +533,9 @@ namespace PAEDUCA.Migrations
             DropIndex("dbo.AspNetUserRoles", new[] { "RoleId" });
             DropIndex("dbo.AspNetUserRoles", new[] { "UserId" });
             DropIndex("dbo.AspNetRoles", "RoleNameIndex");
-            DropIndex("AAC.ProgramacionAAC", new[] { "DocenteEvalua_IdDocente" });
-            DropIndex("AAC.ProgramacionAAC", new[] { "DocenteAcompañante_IdDocente" });
-            DropIndex("UNI.PlanificacionGeneral", new[] { "IdSedeFacultad" });
+            DropIndex("AAC.ProgramacionAAC", new[] { "PlanificacionGeneral_IdPlanificacion" });
+            DropIndex("AAC.ProgramacionAAC", new[] { "DocenteEvaluado_IdDocente" });
+            DropIndex("AAC.ProgramacionAAC", new[] { "DocenteAcompanante_IdDocente" });
             DropIndex("AVD.DetalleAplicacionAVD", new[] { "AplicacionAVD_IdAplicacionVEDD" });
             DropIndex("AVD.DetalleAplicacionAVD", new[] { "IdCriterioAVD" });
             DropIndex("AVD.CriterioAVD", new[] { "IdAspectoAVD" });
@@ -528,8 +543,11 @@ namespace PAEDUCA.Migrations
             DropIndex("VEDD.DetalleAplicacionVEDD", new[] { "AplicacionVEDDEstudiante_IdAplicacionVEDDEstudiante" });
             DropIndex("VEDD.DetalleAplicacionVEDD", new[] { "IdCriterioVEDD" });
             DropIndex("VEDD.AplicacionVEDDEstudiante", new[] { "IdAplicacionVEDD" });
+            DropIndex("VEDD.ProgramacionVEDD", new[] { "PlanificacionGeneral_IdPlanificacion" });
             DropIndex("VEDD.ProgramacionVEDD", new[] { "IdCurso" });
             DropIndex("VEDD.AplicacionVED", new[] { "IdProgramacionVEDD" });
+            DropIndex("UNI.PlanificacionGeneral", new[] { "IdSedeFacultad" });
+            DropIndex("AVD.ProgramacionAVD", new[] { "PlanificacionGeneral_IdPlanificacion" });
             DropIndex("AVD.ProgramacionAVD", new[] { "IdDocente" });
             DropIndex("AVD.AplicacionAVD", new[] { "IdProgramacionAVD" });
             DropIndex("UNI.Recinto", new[] { "IdUniversidad" });
@@ -556,7 +574,6 @@ namespace PAEDUCA.Migrations
             DropTable("dbo.AspNetUserRoles");
             DropTable("dbo.AspNetRoles");
             DropTable("AAC.ProgramacionAAC");
-            DropTable("UNI.PlanificacionGeneral");
             DropTable("AVD.DetalleAplicacionAVD");
             DropTable("AVD.CriterioAVD");
             DropTable("AVD.AspectoAVD");
@@ -566,6 +583,7 @@ namespace PAEDUCA.Migrations
             DropTable("VEDD.AplicacionVEDDEstudiante");
             DropTable("VEDD.ProgramacionVEDD");
             DropTable("VEDD.AplicacionVED");
+            DropTable("UNI.PlanificacionGeneral");
             DropTable("AVD.ProgramacionAVD");
             DropTable("AVD.AplicacionAVD");
             DropTable("UNI.Universidad");

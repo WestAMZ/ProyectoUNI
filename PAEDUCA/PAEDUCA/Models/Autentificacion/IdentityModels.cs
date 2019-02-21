@@ -21,7 +21,7 @@ namespace PAEDUCA.Models
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
     {
         public ApplicationDbContext()
-            : base("Westly", throwIfV1Schema: false)
+            : base("MS", throwIfV1Schema: false)
         {
 
         }
