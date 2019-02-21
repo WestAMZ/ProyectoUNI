@@ -14,7 +14,9 @@ namespace PAEDUCA.DAL
                 new Universidad {Nombre ="Universidad Nacional de Ingeniería",Siglas="UNI",Logo = null, Eslogan = "Liden en Ciencia y Tecnología"},
                 new Universidad {Nombre ="Universidad Nacional Autónoma de Nicaragua",Siglas="UNAN",Logo = null, Eslogan = "¡A la Libertad por La Universidad!"},
             };
-            //Llenado de UNI
+            //☺☻♥♦♣♠•◘○☺☻♥♦♣♠•◘○☺☻♥♦♣♠•◘○☺☻♥♦♣♠•◘○☺☻♥♦♣♠•◘○☺☻♥♦♣♠•◘○☺☻♥♦♣♠•◘○☺☻♥♦♣♠•◘○
+            //                              Llenado de UNI
+            //☺☻♥♦♣♠•◘○☺☻♥♦♣♠•◘○☺☻♥♦♣♠•◘○☺☻♥♦♣♠•◘○☺☻♥♦♣♠•◘○☺☻♥♦♣♠•◘○☺☻♥♦♣♠•◘○☺☻♥♦♣♠•◘○
             universidades[1].Recintos = new List<Recinto>
             {
                 new Recinto {NombreRecinto="Recinto Universitario Simón Bolivar",Siglas="RUSB"},
@@ -58,6 +60,14 @@ namespace PAEDUCA.DAL
             docentes.ForEach(d => context.Docente.Add(d));
             context.SaveChanges();
 
+
+            var asignaturas = new List<Asignatura>
+            {
+                new Asignatura { Nombre = "Introducción a la Programación" ,Tipo = "Básica,General" ,Creditos = 3 },
+                new Asignatura { Nombre = "Programación I" ,Tipo = "Básica,General" ,Creditos = 3 }
+            };
+            asignaturas.ForEach(a => context.Asignatura.Add(a));
+            context.SaveChanges();
         }
     }
 }
