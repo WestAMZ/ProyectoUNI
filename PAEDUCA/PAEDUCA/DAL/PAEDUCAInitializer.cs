@@ -33,13 +33,13 @@ namespace PAEDUCA.DAL
             context.SaveChanges();
             var departamentos = new List<DepartamentoCoordinacion>
             {
-                new DepartamentoCoordinacion {IdSedeFacultad = 1,Nombre = "Informática" ,Tipo = TipoDivision.Departamento},
-                new DepartamentoCoordinacion {IdSedeFacultad = 1,Nombre = "Administración" ,Tipo = TipoDivision.Departamento},
-                new DepartamentoCoordinacion {IdSedeFacultad = 1,Nombre = "Informática" ,Tipo = TipoDivision.Departamento},
-                new DepartamentoCoordinacion {IdSedeFacultad = 1,Nombre = "Matemáticas" ,Tipo = TipoDivision.Departamento},
-                new DepartamentoCoordinacion {IdSedeFacultad = 1,Nombre = "Idiomas" ,Tipo = TipoDivision.Departamento},
-                new DepartamentoCoordinacion {IdSedeFacultad = 1,Nombre = "Ciencias Sociales" ,Tipo = TipoDivision.Departamento},
-                new DepartamentoCoordinacion {IdSedeFacultad = 1,Nombre = "Física" ,Tipo = TipoDivision.Departamento},
+                new DepartamentoCoordinacion {IdSedeFacultad = 1,Nombre = "Departamento de Informática" ,Tipo = TipoDivision.Departamento},
+                new DepartamentoCoordinacion {IdSedeFacultad = 1,Nombre = "Departamento de Administración" ,Tipo = TipoDivision.Departamento},
+                new DepartamentoCoordinacion {IdSedeFacultad = 1,Nombre = "Departamento de Informática" ,Tipo = TipoDivision.Departamento},
+                new DepartamentoCoordinacion {IdSedeFacultad = 1,Nombre = "Departamento de Matemáticas" ,Tipo = TipoDivision.Departamento},
+                new DepartamentoCoordinacion {IdSedeFacultad = 1,Nombre = "Departamento de Idiomas" ,Tipo = TipoDivision.Departamento},
+                new DepartamentoCoordinacion {IdSedeFacultad = 1,Nombre = "Departamento de Ciencias Sociales" ,Tipo = TipoDivision.Departamento},
+                new DepartamentoCoordinacion {IdSedeFacultad = 1,Nombre = "Departamento de Física" ,Tipo = TipoDivision.Departamento},
             };
             departamentos.ForEach(d => context.DepartamentoCoordinacion.Add(d));
             context.SaveChanges();
@@ -47,7 +47,13 @@ namespace PAEDUCA.DAL
             var docentes = new List<Docente>
             {
                 new Docente {IdDepartamentoCoordinacion = 1,Nombres = "Patricia del Carmen",Apellidos = "Lacayo Cruz",Sexo=Sexo.Femenino},
-                new Docente {IdDepartamentoCoordinacion = 1,Nombres = "Evelyn del Carmen",Apellidos = "Espinoza Aragón",Sexo=Sexo.Femenino}
+                new Docente {IdDepartamentoCoordinacion = 1,Nombres = "Evelyn del Carmen",Apellidos = "Espinoza Aragón",Sexo=Sexo.Femenino},
+                new Docente {IdDepartamentoCoordinacion = 1,Nombres = "Evelyn del Carmen",Apellidos = "Espinoza Aragón",Sexo=Sexo.Femenino},
+                new Docente {IdDepartamentoCoordinacion = 1,Nombres = "Yasser Ronaldo",Apellidos = "Membreño Gudiel",Sexo=Sexo.Masculino},
+                new Docente {IdDepartamentoCoordinacion = 1,Nombres = "Walger José",Apellidos = "Herrera Treminio",Sexo=Sexo.Masculino},
+                new Docente {IdDepartamentoCoordinacion = 1,Nombres = "Reynaldo Antonio",Apellidos = "Castaño Umaña",Sexo=Sexo.Masculino},
+                new Docente {IdDepartamentoCoordinacion = 1,Nombres = "Danilo Humberto",Apellidos = "Noguera Rivera",Sexo=Sexo.Masculino},
+                new Docente {IdDepartamentoCoordinacion = 1,Nombres = "Claudia Lucía",Apellidos = "Benavídez Rugama",Sexo=Sexo.Femenino}
             };
             docentes.ForEach(d => context.Docente.Add(d));
             context.SaveChanges();

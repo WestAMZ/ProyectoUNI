@@ -197,6 +197,7 @@
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Configuraciones\Configuraciones.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\GestionIntrumentosController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="DAL\Conexion.cs" />
@@ -205,9 +206,9 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201902190123149_Inicial.cs" />
-    <Compile Include="Migrations\201902190123149_Inicial.Designer.cs">
-      <DependentUpon>201902190123149_Inicial.cs</DependentUpon>
+    <Compile Include="Migrations\201902210518179_inicial.cs" />
+    <Compile Include="Migrations\201902210518179_inicial.Designer.cs">
+      <DependentUpon>201902210518179_inicial.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AAC\AplicacionAAC.cs" />
@@ -223,6 +224,7 @@
     <Compile Include="Models\AVD\ProgramacionAVD.cs" />
     <Compile Include="Models\Autentificacion\IdentityModels.cs" />
     <Compile Include="Models\Autentificacion\ManageViewModels.cs" />
+    <Compile Include="Models\Criterio.cs" />
     <Compile Include="Models\UNI\Asignatura.cs" />
     <Compile Include="Models\UNI\Carrera.cs" />
     <Compile Include="Models\UNI\CarreraAsignatura.cs" />
@@ -308,6 +310,7 @@
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
     <Content Include="Views\Shared\DisplayTemplates\DateTime.cshtml" />
     <Content Include="Views\Shared\EditorTemplates\DateTime.cshtml" />
+    <Content Include="Views\GestionIntrumentos\AAC.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -322,8 +325,8 @@
     <Content Include="Scripts\jquery-1.10.2.min.map" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201902190123149_Inicial.resx">
-      <DependentUpon>201902190123149_Inicial.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201902210518179_inicial.resx">
+      <DependentUpon>201902210518179_inicial.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
