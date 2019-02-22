@@ -83,7 +83,25 @@ namespace PAEDUCA.DAL
             {
                 new CriterioAAC
                 {
-                    Nombre = "Entregó el plan calendaio de la asignatura en el tiempo establecido",
+                    Nombre = "Entregó el plan calendario de la asignatura en el tiempo establecido",
+                    TipoValor = TipoValor.SiNo,
+                    TipoVisualizacion = TipoVisualizacion.RadioButton
+                },
+                new CriterioAAC
+                {
+                    Nombre = "Planifica la clase de acuerdo al plan calendario de la asignatura",
+                    TipoValor = TipoValor.SiNo,
+                    TipoVisualizacion = TipoVisualizacion.RadioButton
+                },
+                new CriterioAAC
+                {
+                    Nombre = " Cumple con el horario de clases en el tiempo establecido",
+                    TipoValor = TipoValor.SiNo,
+                    TipoVisualizacion = TipoVisualizacion.RadioButton
+                },
+                new CriterioAAC
+                {
+                    Nombre = " Atiende la consulta de los estudiantes",
                     TipoValor = TipoValor.SiNo,
                     TipoVisualizacion = TipoVisualizacion.RadioButton
                 }
