@@ -24,18 +24,18 @@ namespace PAEDUCA
                       "~/Scripts/bootstrap.js",
                       "~/Scripts/respond.js"));
 
-            //bundles.Add(new StyleBundle("~/Content/css").Include(
-            //          "~/Content/bootstrap.css",
-            //          "~/Content/site.css"));
+            bundles.Add(new StyleBundle("~/Content/css").Include(
+                      "~/Content/bootstrap.css"));
 
             //Bundle Robust
-            bundles.Add(new StyleBundle("~/bundles/css_robust").IncludeDirectory
-                ("~/Content/css_robust", "*.css",true));
+            //bundles.Add(new StyleBundle("~/bundles/css_robust").IncludeDirectory
+            //    ("~/Content/css_robust", "*.css", true));
 
             bundles.Add(new StyleBundle("~/bundles/font_awesome").Include(
-                      "~/Content/font_awesome/css/all.min.css"));
-
-
+                      "~/Content/font_awesome/css/all.css"));
+            //Estilos Personales
+            bundles.Add(new StyleBundle("~/Content/site").Include(
+                       "~/Content/components/sidebar.css"));
         }
     }
 }
