@@ -22,3 +22,18 @@ select,
 textarea {
     max-width: 280px;
 }
+
+/*Modificación a los estilos de side bar
+
+    Colores : 
+    Azul principal #072F4F
+    Azul mas oscuro 041B2D
+*/
+
+#sidebar .sidebar-header 
+{
+    background-color : #007ACC !important;
+}
+#sidebar ul li a:hover {
+    background-color : #0062A4 !important;
+}

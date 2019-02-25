@@ -35,7 +35,8 @@ namespace PAEDUCA
                       "~/Content/font_awesome/css/all.css"));
             //Estilos Personales
             bundles.Add(new StyleBundle("~/Content/site").Include(
-                       "~/Content/components/sidebar.css"));
+                       "~/Content/components/sidebar.css",
+                       "~/Content/Site.css"));
         }
     }
 }
