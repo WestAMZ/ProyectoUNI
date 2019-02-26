@@ -26,5 +26,10 @@ namespace PAEDUCA.Controllers
 
             return View();
         }
+        public ActionResult Prueba()
+        {
+            ViewBag.Message = "Pureba";
+            return View();
+        }
     }
 }
