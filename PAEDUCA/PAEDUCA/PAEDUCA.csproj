@@ -256,6 +256,7 @@
     <Content Include="ApplicationInsights.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <Content Include="Public\css\css_robust\fonts\icomoon.css" />
     <Content Include="Public\css\Estilos.css" />
     <Content Include="Public\css\css_robust\app.min.css" />
     <Content Include="Public\css\css_robust\bootstrap-extended.min.css" />
@@ -271,7 +272,7 @@
     <Content Include="Views\Web.config" />
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
-    <Content Include="Views\Shared\_Layout.cshtml" />
+    <Content Include="Views\PanelControl\_Layout.cshtml" />
     <Content Include="Views\Home\About.cshtml" />
     <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
@@ -300,11 +301,11 @@
     <Content Include="Views\GestionIntrumentos\AAC.cshtml" />
     <Content Include="Views\PanelControl\Index.cshtml" />
     <Content Include="Views\PanelControl\_ViewStart.cshtml" />
-    <Content Include="Views\PanelControl\_Layout.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Public\css\css_robust\core\" />
+    <Folder Include="Public\css\css_robust\fonts\icomoon\" />
     <Folder Include="Public\css\css_robust\pages\" />
     <Folder Include="Public\css\css_robust\plugins\" />
     <Folder Include="Public\js\" />
@@ -316,6 +317,7 @@
     <Content Include="packages.config" />
     <None Include="Project_Readme.html" />
     <Content Include="Views\Home\Prueba.cshtml" />
+    <Content Include="Views\Shared\_Layout.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201902211911475_Inicial.resx">

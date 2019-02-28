@@ -33,7 +33,9 @@ namespace PAEDUCA
                         "~/Public/css/css_robust/bootstrap-extended.min.css",
                         "~/Public/css/css_robust/app.min.css",
                         "~/Public/css/css_robust/colors.min.css",
-                        "~/Public/css/css_robust/core/menu/menu-types/vertical-menu.css"));
+                        "~/Public/css/css_robust/core/menu/menu-types/vertical-menu.css",
+                        "~/Public/css/css_robust/fonts/icomoon.css"
+                        ));
             //bundles.Add(new StyleBundle("~/Content/css_robust").IncludeDirectory
             //    ("~/Public/css/css_robust", "*.css", true));
 
