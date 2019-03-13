@@ -13,7 +13,7 @@ namespace PAEDUCA.Controllers
         // GET: GestionIntrumentos
         public ActionResult AAC()
         {
-            return View(db.CriterioAAC);
+            return View(db.CriterioAAC.ToList());
         }
     }
 }
