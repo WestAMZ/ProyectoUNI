@@ -207,9 +207,9 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201903131852186_Creación de BD.cs" />
-    <Compile Include="Migrations\201903131852186_Creación de BD.Designer.cs">
-      <DependentUpon>201903131852186_Creación de BD.cs</DependentUpon>
+    <Compile Include="Migrations\201903140444073_generarBD.cs" />
+    <Compile Include="Migrations\201903140444073_generarBD.Designer.cs">
+      <DependentUpon>201903140444073_generarBD.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AAC\AplicacionAAC.cs" />
@@ -298,7 +298,7 @@
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
     <Content Include="Views\Shared\DisplayTemplates\DateTime.cshtml" />
     <Content Include="Views\Shared\EditorTemplates\DateTime.cshtml" />
-    <Content Include="Views\GestionIntrumentos\AAC.cshtml" />
+    <Content Include="Views\PanelControl\GestionIntrumentos\AAC.cshtml" />
     <Content Include="Views\PanelControl\Index.cshtml" />
     <Content Include="Views\PanelControl\_ViewStart.cshtml" />
   </ItemGroup>
@@ -320,8 +320,8 @@
     <Content Include="Views\Shared\_Layout.cshtml" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201903131852186_Creación de BD.resx">
-      <DependentUpon>201903131852186_Creación de BD.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201903140444073_generarBD.resx">
+      <DependentUpon>201903140444073_generarBD.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

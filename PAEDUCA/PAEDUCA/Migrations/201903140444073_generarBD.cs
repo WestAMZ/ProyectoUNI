@@ -3,7 +3,7 @@ namespace PAEDUCA.Migrations
     using System;
     using System.Data.Entity.Migrations;
     
-    public partial class CreacióndeBD : DbMigration
+    public partial class generarBD : DbMigration
     {
         public override void Up()
         {

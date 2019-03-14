@@ -3,6 +3,7 @@ using System.Security.Claims;
 using System.Threading.Tasks;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
+using PAEDUCA.DAL;
 
 namespace PAEDUCA.Models
 {
@@ -23,7 +24,7 @@ namespace PAEDUCA.Models
         public ApplicationDbContext()
             : base("Westly", throwIfV1Schema: false)
         {
-            Database.SetInitializer<ApplicationDbContext>(new CreateDatabaseIfNotExists<ApplicationDbContext>());
+            Database.SetInitializer<ApplicationDbContext>(new PAEDUCAInitializer());
         }
         //UNI
         public virtual DbSet<Universidad> Universidades { get; set; }
