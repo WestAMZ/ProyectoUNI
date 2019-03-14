@@ -21,9 +21,9 @@ namespace PAEDUCA.Models
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
     {
         public ApplicationDbContext()
-            : base("MS", throwIfV1Schema: false)
+            : base("Westly", throwIfV1Schema: false)
         {
-
+            Database.SetInitializer<ApplicationDbContext>(new CreateDatabaseIfNotExists<ApplicationDbContext>());
         }
         //UNI
         public virtual DbSet<Universidad> Universidades { get; set; }
