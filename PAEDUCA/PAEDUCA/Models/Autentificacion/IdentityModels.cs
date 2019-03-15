@@ -24,7 +24,7 @@ namespace PAEDUCA.Models
         public ApplicationDbContext()
             : base("Westly", throwIfV1Schema: false)
         {
-            Database.SetInitializer<ApplicationDbContext>(new PAEDUCAInitializer());
+           
         }
         //UNI
         public virtual DbSet<Universidad> Universidades { get; set; }

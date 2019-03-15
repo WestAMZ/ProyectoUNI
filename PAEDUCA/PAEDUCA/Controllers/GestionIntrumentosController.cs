@@ -9,7 +9,7 @@ namespace PAEDUCA.Controllers
 {
     public class GestionIntrumentosController : Controller
     {
-        private ApplicationDbContext db = new ApplicationDbContext();
+        private ApplicationDbContext db =  ApplicationDbContext.Create();
         // GET: GestionIntrumentos
         public ActionResult AAC()
         {
