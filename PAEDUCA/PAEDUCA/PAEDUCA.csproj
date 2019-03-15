@@ -256,6 +256,7 @@
     <Content Include="ApplicationInsights.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <Content Include="Public\css\css_robust\custom-rtl.css" />
     <Content Include="Public\css\css_robust\fonts\icomoon.css" />
     <Content Include="Public\css\Estilos.css" />
     <Content Include="Public\css\css_robust\app.min.css" />
