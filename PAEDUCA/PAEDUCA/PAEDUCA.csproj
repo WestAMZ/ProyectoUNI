@@ -25,6 +25,7 @@
     <UseGlobalApplicationHostFile />
     <NuGetPackageImportStamp>
     </NuGetPackageImportStamp>
+    <Use64BitIISExpress />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -226,6 +227,7 @@
     <Compile Include="Models\Autentificacion\IdentityModels.cs" />
     <Compile Include="Models\Autentificacion\ManageViewModels.cs" />
     <Compile Include="Models\Criterio.cs" />
+    <Compile Include="Models\Persona.cs" />
     <Compile Include="Models\UNI\Asignatura.cs" />
     <Compile Include="Models\UNI\Carrera.cs" />
     <Compile Include="Models\UNI\CarreraAsignatura.cs" />
@@ -251,7 +253,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="favicon.ico" />
-    <Content Include="fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="Public\fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="ApplicationInsights.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
@@ -299,9 +301,7 @@
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
     <Content Include="Views\Shared\DisplayTemplates\DateTime.cshtml" />
     <Content Include="Views\Shared\EditorTemplates\DateTime.cshtml" />
-    <Content Include="Views\PanelControl\GestionIntrumentos\AAC.cshtml" />
-    <Content Include="Views\PanelControl\Index.cshtml" />
-    <Content Include="Views\PanelControl\_ViewStart.cshtml" />
+    <Content Include="Views\GestionIntrumentos\AAC.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -312,9 +312,9 @@
     <Folder Include="Public\js\" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="fonts\glyphicons-halflings-regular.woff" />
-    <Content Include="fonts\glyphicons-halflings-regular.ttf" />
-    <Content Include="fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="Public\fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="Public\fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="Public\fonts\glyphicons-halflings-regular.eot" />
     <Content Include="packages.config" />
     <None Include="Project_Readme.html" />
     <Content Include="Views\Home\Prueba.cshtml" />

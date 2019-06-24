@@ -22,7 +22,7 @@ namespace PAEDUCA.Models
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
     {
         public ApplicationDbContext()
-            : base("MS", throwIfV1Schema: false)
+            : base("Westly", throwIfV1Schema: false)
         {
            
         }
@@ -31,6 +31,7 @@ namespace PAEDUCA.Models
         public virtual DbSet<Recinto> Recintos { set; get; }
         public virtual DbSet<SedeFacultad> Sede_Facutad { set; get; }
         public virtual DbSet<DepartamentoCoordinacion> DepartamentoCoordinacion { set; get; }
+        public virtual DbSet<Persona> Persona { get; set; }
         public virtual DbSet<Docente> Docente { set; get; }
         public virtual DbSet<Carrera> Carrera { set; get; }
         public virtual DbSet<CarreraSedeFacultad> CarreraSedeFacultad { set; get; }
@@ -64,7 +65,23 @@ namespace PAEDUCA.Models
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
-            modelBuilder.HasDefaultSchema("dbo");
+            modelBuilder.HasDefaultSchema("ACCESO");
+            //Cambio de de estructura en tablas de autentificación
+
+            base.OnModelCreating(modelBuilder);
+            modelBuilder.Entity<IdentityUser>()
+                                .Property(p => p.UserName)
+                                .HasColumnName("NombreUsuario");
+            
+            modelBuilder.Entity<IdentityUser>().Ignore(c => c.PhoneNumber)
+                                               .Ignore(c => c.PhoneNumberConfirmed)
+                                               .Ignore(c => c.AccessFailedCount)
+                                               .Ignore(c => c.LockoutEnabled)
+                                               .Ignore(c => c.LockoutEndDateUtc)
+                                               .Ignore(c => c.Roles)
+                                               .Ignore(c => c.TwoFactorEnabled);
+            modelBuilder.Entity<IdentityUser>().ToTable("Usuario");
+
             //modelBuilder.Entity<HistoryRow>().ToTable(tableName: "MigrationHistory", schemaName: "Admin");
             //modelBuilder.Entity<HistoryRow>().Property(p => p.MigrationId).HasColumnName("Migration_ID");
             //modelBuilder.Entity<HistoryRow>().HasKey(p => p.MigrationId);
@@ -74,6 +91,7 @@ namespace PAEDUCA.Models
             modelBuilder.Entity<Recinto>().ToTable(tableName: "Recinto", schemaName: "UNI");
             modelBuilder.Entity<SedeFacultad>().ToTable(tableName: "SedeFacultad", schemaName: "UNI");
             modelBuilder.Entity<Carrera>().ToTable(tableName: "Carrera", schemaName: "UNI");
+            modelBuilder.Entity<Persona>().ToTable(tableName: "Persona", schemaName: "UNI");
             modelBuilder.Entity<Docente>().ToTable(tableName: "Docente", schemaName: "UNI");
             modelBuilder.Entity<DepartamentoCoordinacion>().ToTable(tableName: "DepartamentoCoordinacion", schemaName: "UNI");
             modelBuilder.Entity<CarreraSedeFacultad>().ToTable(tableName: "CarreraSedeFacultad", schemaName: "UNI");

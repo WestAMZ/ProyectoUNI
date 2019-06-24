@@ -14,7 +14,7 @@ namespace PAEDUCA.Controllers
         public ActionResult AAC()
         {
             List<AspectoAAC>  aspectos = db.AspectoAAC.ToList();
-            return View("~/Views/PanelControl/GestionIntrumentos/AAC.cshtml", aspectos);
+            return View(aspectos);
         }
     }
 }

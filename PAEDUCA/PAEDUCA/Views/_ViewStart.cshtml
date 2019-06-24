@@ -1,6 +1,6 @@
 ﻿@{
     //Layout por defecto
-    if (!Context.User.Identity.IsAuthenticated)
+    if (Context.User.Identity.IsAuthenticated)
     {
         Layout = "~/Views/Shared/_Layout.cshtml";
     }

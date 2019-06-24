@@ -4,18 +4,14 @@ using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Web;
+using PAEDUCA.Models;
 
 namespace PAEDUCA.Models
 {
-    public class Docente
+    public class Docente:Persona
     {
         [Key]
         public int IdDocente { set; get; }
-        [StringLength(40)]
-        public string Nombres { set; get; }
-        [StringLength(40)]
-        public string Apellidos { set; get; } 
-        public Sexo Sexo { set; get; }
         [StringLength(30)]
         public string TipoContratacion { set; get; }
         [StringLength(30)]
