@@ -78,9 +78,8 @@ namespace PAEDUCA.Models
                                                .Ignore(c => c.AccessFailedCount)
                                                .Ignore(c => c.LockoutEnabled)
                                                .Ignore(c => c.LockoutEndDateUtc)
-                                               .Ignore(c => c.Roles)
                                                .Ignore(c => c.TwoFactorEnabled);
-            modelBuilder.Entity<IdentityUser>().ToTable("Usuario");
+            modelBuilder.Entity<IdentityUser>().ToTable(tableName: "Usuario", schemaName: "ASP");
 
             //modelBuilder.Entity<HistoryRow>().ToTable(tableName: "MigrationHistory", schemaName: "Admin");
             //modelBuilder.Entity<HistoryRow>().Property(p => p.MigrationId).HasColumnName("Migration_ID");

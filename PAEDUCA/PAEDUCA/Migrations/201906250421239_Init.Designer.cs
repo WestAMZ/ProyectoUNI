@@ -7,13 +7,13 @@ namespace PAEDUCA.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.1.3-40302")]
-    public sealed partial class GenerarDB : IMigrationMetadata
+    public sealed partial class Init : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(GenerarDB));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(Init));
         
         string IMigrationMetadata.Id
         {
-            get { return "201903150312484_GenerarDB"; }
+            get { return "201906250421239_Init"; }
         }
         
         string IMigrationMetadata.Source

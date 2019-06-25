@@ -208,9 +208,9 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201903150312484_GenerarDB.cs" />
-    <Compile Include="Migrations\201903150312484_GenerarDB.Designer.cs">
-      <DependentUpon>201903150312484_GenerarDB.cs</DependentUpon>
+    <Compile Include="Migrations\201906250421239_Init.cs" />
+    <Compile Include="Migrations\201906250421239_Init.Designer.cs">
+      <DependentUpon>201906250421239_Init.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AAC\AplicacionAAC.cs" />
@@ -321,8 +321,8 @@
     <Content Include="Views\Shared\_Layout.cshtml" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201903150312484_GenerarDB.resx">
-      <DependentUpon>201903150312484_GenerarDB.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201906250421239_Init.resx">
+      <DependentUpon>201906250421239_Init.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

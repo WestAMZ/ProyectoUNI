@@ -3,7 +3,7 @@ namespace PAEDUCA.Migrations
     using System;
     using System.Data.Entity.Migrations;
     
-    public partial class GenerarDB : DbMigration
+    public partial class Init : DbMigration
     {
         public override void Up()
         {
@@ -13,14 +13,14 @@ namespace PAEDUCA.Migrations
                     {
                         IdAplicacionaACC = c.Int(nullable: false, identity: true),
                         FechaAplicacion = c.DateTime(nullable: false),
-                        DocenteAcompañante_IdDocente = c.Int(),
-                        DocenteEvaluado_IdDocente = c.Int(),
+                        DocenteAcompañante_IdPersona = c.Int(),
+                        DocenteEvaluado_IdPersona = c.Int(),
                     })
                 .PrimaryKey(t => t.IdAplicacionaACC)
-                .ForeignKey("UNI.Docente", t => t.DocenteAcompañante_IdDocente)
-                .ForeignKey("UNI.Docente", t => t.DocenteEvaluado_IdDocente)
-                .Index(t => t.DocenteAcompañante_IdDocente)
-                .Index(t => t.DocenteEvaluado_IdDocente);
+                .ForeignKey("UNI.Docente", t => t.DocenteAcompañante_IdPersona)
+                .ForeignKey("UNI.Docente", t => t.DocenteEvaluado_IdPersona)
+                .Index(t => t.DocenteAcompañante_IdPersona)
+                .Index(t => t.DocenteEvaluado_IdPersona);
             
             CreateTable(
                 "AAC.DetalleAplicacionAAC",
@@ -66,20 +66,15 @@ namespace PAEDUCA.Migrations
                 .PrimaryKey(t => t.IdAspectoACC);
             
             CreateTable(
-                "UNI.Docente",
+                "UNI.Persona",
                 c => new
                     {
-                        IdDocente = c.Int(nullable: false, identity: true),
-                        Nombres = c.String(maxLength: 40),
-                        Apellidos = c.String(maxLength: 40),
+                        IdPersona = c.Int(nullable: false, identity: true),
+                        Nombres = c.String(maxLength: 100),
+                        Apellidos = c.String(maxLength: 100),
                         Sexo = c.Int(nullable: false),
-                        TipoContratacion = c.String(maxLength: 30),
-                        Categoria = c.String(maxLength: 30),
-                        IdDepartamentoCoordinacion = c.Int(nullable: false),
                     })
-                .PrimaryKey(t => t.IdDocente)
-                .ForeignKey("UNI.DepartamentoCoordinacion", t => t.IdDepartamentoCoordinacion, cascadeDelete: true)
-                .Index(t => t.IdDepartamentoCoordinacion);
+                .PrimaryKey(t => t.IdPersona);
             
             CreateTable(
                 "UNI.DepartamentoCoordinacion",
@@ -195,13 +190,13 @@ namespace PAEDUCA.Migrations
                         IdDocenteCurso = c.Int(nullable: false, identity: true),
                         Estado = c.Boolean(nullable: false),
                         Curso_IdCurso = c.Int(),
-                        Docente_IdDocente = c.Int(),
+                        Docente_IdPersona = c.Int(),
                     })
                 .PrimaryKey(t => t.IdDocenteCurso)
                 .ForeignKey("UNI.Curso", t => t.Curso_IdCurso)
-                .ForeignKey("UNI.Docente", t => t.Docente_IdDocente)
+                .ForeignKey("UNI.Docente", t => t.Docente_IdPersona)
                 .Index(t => t.Curso_IdCurso)
-                .Index(t => t.Docente_IdDocente);
+                .Index(t => t.Docente_IdPersona);
             
             CreateTable(
                 "UNI.Recinto",
@@ -253,7 +248,7 @@ namespace PAEDUCA.Migrations
                         PlanificacionGeneral_IdPlanificacion = c.Int(),
                     })
                 .PrimaryKey(t => t.IdProgramacionAVD)
-                .ForeignKey("UNI.Docente", t => t.IdDocente, cascadeDelete: true)
+                .ForeignKey("UNI.Docente", t => t.IdDocente)
                 .ForeignKey("UNI.PlanificacionGeneral", t => t.PlanificacionGeneral_IdPlanificacion)
                 .Index(t => t.IdDocente)
                 .Index(t => t.PlanificacionGeneral_IdPlanificacion);
@@ -404,20 +399,20 @@ namespace PAEDUCA.Migrations
                         HoraInicio = c.Time(nullable: false, precision: 7),
                         HoraFin = c.Time(nullable: false, precision: 7),
                         IdPlanificacionGeneral = c.Int(nullable: false),
-                        DocenteAcompanante_IdDocente = c.Int(),
-                        DocenteEvaluado_IdDocente = c.Int(),
+                        DocenteAcompanante_IdPersona = c.Int(),
+                        DocenteEvaluado_IdPersona = c.Int(),
                         PlanificacionGeneral_IdPlanificacion = c.Int(),
                     })
                 .PrimaryKey(t => t.IdProgramacionACC)
-                .ForeignKey("UNI.Docente", t => t.DocenteAcompanante_IdDocente)
-                .ForeignKey("UNI.Docente", t => t.DocenteEvaluado_IdDocente)
+                .ForeignKey("UNI.Docente", t => t.DocenteAcompanante_IdPersona)
+                .ForeignKey("UNI.Docente", t => t.DocenteEvaluado_IdPersona)
                 .ForeignKey("UNI.PlanificacionGeneral", t => t.PlanificacionGeneral_IdPlanificacion)
-                .Index(t => t.DocenteAcompanante_IdDocente)
-                .Index(t => t.DocenteEvaluado_IdDocente)
+                .Index(t => t.DocenteAcompanante_IdPersona)
+                .Index(t => t.DocenteEvaluado_IdPersona)
                 .Index(t => t.PlanificacionGeneral_IdPlanificacion);
             
             CreateTable(
-                "dbo.AspNetRoles",
+                "ACCESO.AspNetRoles",
                 c => new
                     {
                         Id = c.String(nullable: false, maxLength: 128),
@@ -427,20 +422,21 @@ namespace PAEDUCA.Migrations
                 .Index(t => t.Name, unique: true, name: "RoleNameIndex");
             
             CreateTable(
-                "dbo.AspNetUserRoles",
+                "ACCESO.AspNetUserRoles",
                 c => new
                     {
                         UserId = c.String(nullable: false, maxLength: 128),
                         RoleId = c.String(nullable: false, maxLength: 128),
+                        IdentityUser_Id = c.String(maxLength: 128),
                     })
                 .PrimaryKey(t => new { t.UserId, t.RoleId })
-                .ForeignKey("dbo.AspNetRoles", t => t.RoleId, cascadeDelete: true)
-                .ForeignKey("dbo.AspNetUsers", t => t.UserId, cascadeDelete: true)
-                .Index(t => t.UserId)
-                .Index(t => t.RoleId);
+                .ForeignKey("ACCESO.AspNetRoles", t => t.RoleId, cascadeDelete: true)
+                .ForeignKey("ASP.Usuario", t => t.IdentityUser_Id)
+                .Index(t => t.RoleId)
+                .Index(t => t.IdentityUser_Id);
             
             CreateTable(
-                "dbo.AspNetUsers",
+                "ASP.Usuario",
                 c => new
                     {
                         Id = c.String(nullable: false, maxLength: 128),
@@ -448,53 +444,78 @@ namespace PAEDUCA.Migrations
                         EmailConfirmed = c.Boolean(nullable: false),
                         PasswordHash = c.String(),
                         SecurityStamp = c.String(),
-                        PhoneNumber = c.String(),
-                        PhoneNumberConfirmed = c.Boolean(nullable: false),
-                        TwoFactorEnabled = c.Boolean(nullable: false),
-                        LockoutEndDateUtc = c.DateTime(),
-                        LockoutEnabled = c.Boolean(nullable: false),
-                        AccessFailedCount = c.Int(nullable: false),
-                        UserName = c.String(nullable: false, maxLength: 256),
+                        NombreUsuario = c.String(nullable: false, maxLength: 256),
                     })
                 .PrimaryKey(t => t.Id)
-                .Index(t => t.UserName, unique: true, name: "UserNameIndex");
+                .Index(t => t.NombreUsuario, unique: true, name: "UserNameIndex");
             
             CreateTable(
-                "dbo.AspNetUserClaims",
+                "ACCESO.AspNetUserClaims",
                 c => new
                     {
                         Id = c.Int(nullable: false, identity: true),
-                        UserId = c.String(nullable: false, maxLength: 128),
+                        UserId = c.String(),
                         ClaimType = c.String(),
                         ClaimValue = c.String(),
+                        IdentityUser_Id = c.String(maxLength: 128),
                     })
                 .PrimaryKey(t => t.Id)
-                .ForeignKey("dbo.AspNetUsers", t => t.UserId, cascadeDelete: true)
-                .Index(t => t.UserId);
+                .ForeignKey("ASP.Usuario", t => t.IdentityUser_Id)
+                .Index(t => t.IdentityUser_Id);
             
             CreateTable(
-                "dbo.AspNetUserLogins",
+                "ACCESO.AspNetUserLogins",
                 c => new
                     {
                         LoginProvider = c.String(nullable: false, maxLength: 128),
                         ProviderKey = c.String(nullable: false, maxLength: 128),
                         UserId = c.String(nullable: false, maxLength: 128),
+                        IdentityUser_Id = c.String(maxLength: 128),
                     })
                 .PrimaryKey(t => new { t.LoginProvider, t.ProviderKey, t.UserId })
-                .ForeignKey("dbo.AspNetUsers", t => t.UserId, cascadeDelete: true)
-                .Index(t => t.UserId);
+                .ForeignKey("ASP.Usuario", t => t.IdentityUser_Id)
+                .Index(t => t.IdentityUser_Id);
+            
+            CreateTable(
+                "UNI.Docente",
+                c => new
+                    {
+                        IdPersona = c.Int(nullable: false),
+                        IdDocente = c.Int(nullable: false),
+                        TipoContratacion = c.String(maxLength: 30),
+                        Categoria = c.String(maxLength: 30),
+                        IdDepartamentoCoordinacion = c.Int(nullable: false),
+                    })
+                .PrimaryKey(t => t.IdPersona)
+                .ForeignKey("UNI.Persona", t => t.IdPersona)
+                .ForeignKey("UNI.DepartamentoCoordinacion", t => t.IdDepartamentoCoordinacion, cascadeDelete: true)
+                .Index(t => t.IdPersona)
+                .Index(t => t.IdDepartamentoCoordinacion);
+            
+            CreateTable(
+                "ACCESO.AspNetUsers",
+                c => new
+                    {
+                        Id = c.String(nullable: false, maxLength: 128),
+                    })
+                .PrimaryKey(t => t.Id)
+                .ForeignKey("ASP.Usuario", t => t.Id)
+                .Index(t => t.Id);
             
         }
         
         public override void Down()
         {
-            DropForeignKey("dbo.AspNetUserRoles", "UserId", "dbo.AspNetUsers");
-            DropForeignKey("dbo.AspNetUserLogins", "UserId", "dbo.AspNetUsers");
-            DropForeignKey("dbo.AspNetUserClaims", "UserId", "dbo.AspNetUsers");
-            DropForeignKey("dbo.AspNetUserRoles", "RoleId", "dbo.AspNetRoles");
+            DropForeignKey("ACCESO.AspNetUsers", "Id", "ASP.Usuario");
+            DropForeignKey("UNI.Docente", "IdDepartamentoCoordinacion", "UNI.DepartamentoCoordinacion");
+            DropForeignKey("UNI.Docente", "IdPersona", "UNI.Persona");
+            DropForeignKey("ACCESO.AspNetUserRoles", "IdentityUser_Id", "ASP.Usuario");
+            DropForeignKey("ACCESO.AspNetUserLogins", "IdentityUser_Id", "ASP.Usuario");
+            DropForeignKey("ACCESO.AspNetUserClaims", "IdentityUser_Id", "ASP.Usuario");
+            DropForeignKey("ACCESO.AspNetUserRoles", "RoleId", "ACCESO.AspNetRoles");
             DropForeignKey("AAC.ProgramacionAAC", "PlanificacionGeneral_IdPlanificacion", "UNI.PlanificacionGeneral");
-            DropForeignKey("AAC.ProgramacionAAC", "DocenteEvaluado_IdDocente", "UNI.Docente");
-            DropForeignKey("AAC.ProgramacionAAC", "DocenteAcompanante_IdDocente", "UNI.Docente");
+            DropForeignKey("AAC.ProgramacionAAC", "DocenteEvaluado_IdPersona", "UNI.Docente");
+            DropForeignKey("AAC.ProgramacionAAC", "DocenteAcompanante_IdPersona", "UNI.Docente");
             DropForeignKey("AVD.DetalleAplicacionAVD", "IdCriterioAVD", "AVD.CriterioAVD");
             DropForeignKey("AVD.DetalleAplicacionAVD", "AplicacionAVD_IdAplicacionVEDD", "AVD.AplicacionAVD");
             DropForeignKey("AVD.CriterioAVD", "IdAspectoAVD", "AVD.AspectoAVD");
@@ -509,15 +530,14 @@ namespace PAEDUCA.Migrations
             DropForeignKey("AVD.ProgramacionAVD", "PlanificacionGeneral_IdPlanificacion", "UNI.PlanificacionGeneral");
             DropForeignKey("UNI.PlanificacionGeneral", "IdSedeFacultad", "UNI.SedeFacultad");
             DropForeignKey("AVD.ProgramacionAVD", "IdDocente", "UNI.Docente");
-            DropForeignKey("AAC.AplicacionAAC", "DocenteEvaluado_IdDocente", "UNI.Docente");
-            DropForeignKey("AAC.AplicacionAAC", "DocenteAcompañante_IdDocente", "UNI.Docente");
-            DropForeignKey("UNI.Docente", "IdDepartamentoCoordinacion", "UNI.DepartamentoCoordinacion");
+            DropForeignKey("AAC.AplicacionAAC", "DocenteEvaluado_IdPersona", "UNI.Docente");
+            DropForeignKey("AAC.AplicacionAAC", "DocenteAcompañante_IdPersona", "UNI.Docente");
             DropForeignKey("UNI.DepartamentoCoordinacion", "IdSedeFacultad", "UNI.SedeFacultad");
             DropForeignKey("UNI.SedeFacultad", "IdRecinto", "UNI.Recinto");
             DropForeignKey("UNI.Recinto", "IdUniversidad", "UNI.Universidad");
             DropForeignKey("UNI.CarreraSedeFacultad", "IdSedeFacultad", "UNI.SedeFacultad");
             DropForeignKey("UNI.Curso", "IdGrupo", "UNI.Grupo");
-            DropForeignKey("UNI.DocenteCurso", "Docente_IdDocente", "UNI.Docente");
+            DropForeignKey("UNI.DocenteCurso", "Docente_IdPersona", "UNI.Docente");
             DropForeignKey("UNI.DocenteCurso", "Curso_IdCurso", "UNI.Curso");
             DropForeignKey("UNI.Curso", "IdAsignatura", "UNI.Asignatura");
             DropForeignKey("UNI.CarreraAsignatura", "IdCarrera", "UNI.Carrera");
@@ -527,15 +547,18 @@ namespace PAEDUCA.Migrations
             DropForeignKey("AAC.DetalleAplicacionAAC", "CriterioAAC_IdCriterioACC", "AAC.CriterioAAC");
             DropForeignKey("AAC.CriterioAAC", "AspectoAAC_IdAspectoACC", "AAC.AspectoAAC");
             DropForeignKey("AAC.DetalleAplicacionAAC", "AplicacionAAC_IdAplicacionaACC", "AAC.AplicacionAAC");
-            DropIndex("dbo.AspNetUserLogins", new[] { "UserId" });
-            DropIndex("dbo.AspNetUserClaims", new[] { "UserId" });
-            DropIndex("dbo.AspNetUsers", "UserNameIndex");
-            DropIndex("dbo.AspNetUserRoles", new[] { "RoleId" });
-            DropIndex("dbo.AspNetUserRoles", new[] { "UserId" });
-            DropIndex("dbo.AspNetRoles", "RoleNameIndex");
+            DropIndex("ACCESO.AspNetUsers", new[] { "Id" });
+            DropIndex("UNI.Docente", new[] { "IdDepartamentoCoordinacion" });
+            DropIndex("UNI.Docente", new[] { "IdPersona" });
+            DropIndex("ACCESO.AspNetUserLogins", new[] { "IdentityUser_Id" });
+            DropIndex("ACCESO.AspNetUserClaims", new[] { "IdentityUser_Id" });
+            DropIndex("ASP.Usuario", "UserNameIndex");
+            DropIndex("ACCESO.AspNetUserRoles", new[] { "IdentityUser_Id" });
+            DropIndex("ACCESO.AspNetUserRoles", new[] { "RoleId" });
+            DropIndex("ACCESO.AspNetRoles", "RoleNameIndex");
             DropIndex("AAC.ProgramacionAAC", new[] { "PlanificacionGeneral_IdPlanificacion" });
-            DropIndex("AAC.ProgramacionAAC", new[] { "DocenteEvaluado_IdDocente" });
-            DropIndex("AAC.ProgramacionAAC", new[] { "DocenteAcompanante_IdDocente" });
+            DropIndex("AAC.ProgramacionAAC", new[] { "DocenteEvaluado_IdPersona" });
+            DropIndex("AAC.ProgramacionAAC", new[] { "DocenteAcompanante_IdPersona" });
             DropIndex("AVD.DetalleAplicacionAVD", new[] { "AplicacionAVD_IdAplicacionVEDD" });
             DropIndex("AVD.DetalleAplicacionAVD", new[] { "IdCriterioAVD" });
             DropIndex("AVD.CriterioAVD", new[] { "IdAspectoAVD" });
@@ -551,7 +574,7 @@ namespace PAEDUCA.Migrations
             DropIndex("AVD.ProgramacionAVD", new[] { "IdDocente" });
             DropIndex("AVD.AplicacionAVD", new[] { "IdProgramacionAVD" });
             DropIndex("UNI.Recinto", new[] { "IdUniversidad" });
-            DropIndex("UNI.DocenteCurso", new[] { "Docente_IdDocente" });
+            DropIndex("UNI.DocenteCurso", new[] { "Docente_IdPersona" });
             DropIndex("UNI.DocenteCurso", new[] { "Curso_IdCurso" });
             DropIndex("UNI.CarreraAsignatura", new[] { "IdAsignatura" });
             DropIndex("UNI.CarreraAsignatura", new[] { "IdCarrera" });
@@ -562,17 +585,18 @@ namespace PAEDUCA.Migrations
             DropIndex("UNI.CarreraSedeFacultad", new[] { "IdCarrera" });
             DropIndex("UNI.SedeFacultad", new[] { "IdRecinto" });
             DropIndex("UNI.DepartamentoCoordinacion", new[] { "IdSedeFacultad" });
-            DropIndex("UNI.Docente", new[] { "IdDepartamentoCoordinacion" });
             DropIndex("AAC.CriterioAAC", new[] { "AspectoAAC_IdAspectoACC" });
             DropIndex("AAC.DetalleAplicacionAAC", new[] { "CriterioAAC_IdCriterioACC" });
             DropIndex("AAC.DetalleAplicacionAAC", new[] { "AplicacionAAC_IdAplicacionaACC" });
-            DropIndex("AAC.AplicacionAAC", new[] { "DocenteEvaluado_IdDocente" });
-            DropIndex("AAC.AplicacionAAC", new[] { "DocenteAcompañante_IdDocente" });
-            DropTable("dbo.AspNetUserLogins");
-            DropTable("dbo.AspNetUserClaims");
-            DropTable("dbo.AspNetUsers");
-            DropTable("dbo.AspNetUserRoles");
-            DropTable("dbo.AspNetRoles");
+            DropIndex("AAC.AplicacionAAC", new[] { "DocenteEvaluado_IdPersona" });
+            DropIndex("AAC.AplicacionAAC", new[] { "DocenteAcompañante_IdPersona" });
+            DropTable("ACCESO.AspNetUsers");
+            DropTable("UNI.Docente");
+            DropTable("ACCESO.AspNetUserLogins");
+            DropTable("ACCESO.AspNetUserClaims");
+            DropTable("ASP.Usuario");
+            DropTable("ACCESO.AspNetUserRoles");
+            DropTable("ACCESO.AspNetRoles");
             DropTable("AAC.ProgramacionAAC");
             DropTable("AVD.DetalleAplicacionAVD");
             DropTable("AVD.CriterioAVD");
@@ -597,7 +621,7 @@ namespace PAEDUCA.Migrations
             DropTable("UNI.CarreraSedeFacultad");
             DropTable("UNI.SedeFacultad");
             DropTable("UNI.DepartamentoCoordinacion");
-            DropTable("UNI.Docente");
+            DropTable("UNI.Persona");
             DropTable("AAC.AspectoAAC");
             DropTable("AAC.CriterioAAC");
             DropTable("AAC.DetalleAplicacionAAC");

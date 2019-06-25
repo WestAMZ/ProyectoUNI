@@ -8,6 +8,7 @@ namespace PAEDUCA.Models
 {
     public class Persona
     {
+        [Key]
         public int IdPersona { get; set; }
         [StringLength(100)]
         public string Nombres { set; get; }
