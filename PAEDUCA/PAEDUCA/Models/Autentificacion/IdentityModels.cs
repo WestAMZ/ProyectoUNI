@@ -1,4 +1,5 @@
 ﻿using System.Data.Entity;
+using System.Data.Entity.Migrations.History;
 using System.Security.Claims;
 using System.Threading.Tasks;
 using Microsoft.AspNet.Identity;
@@ -65,7 +66,8 @@ namespace PAEDUCA.Models
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
-            modelBuilder.HasDefaultSchema("ACCESO");
+            modelBuilder.HasDefaultSchema("dbo");
+            modelBuilder.Entity<HistoryRow>().ToTable(tableName: "MigrationHistory", schemaName: "ASP");
             //Cambio de de estructura en tablas de autentificación
 
             base.OnModelCreating(modelBuilder);
@@ -80,6 +82,16 @@ namespace PAEDUCA.Models
                                                .Ignore(c => c.LockoutEndDateUtc)
                                                .Ignore(c => c.TwoFactorEnabled);
             modelBuilder.Entity<IdentityUser>().ToTable(tableName: "Usuario", schemaName: "ASP");
+
+            //Tabla AspNetUser
+
+            base.OnModelCreating(modelBuilder);
+            modelBuilder.Entity<IdentityRole>()
+                                .Property(p => p.Name)
+                                .HasColumnName("Nombre");
+
+            modelBuilder.Entity<IdentityRole>().ToTable(tableName: "Roles", schemaName: "ASP");
+
 
             //modelBuilder.Entity<HistoryRow>().ToTable(tableName: "MigrationHistory", schemaName: "Admin");
             //modelBuilder.Entity<HistoryRow>().Property(p => p.MigrationId).HasColumnName("Migration_ID");
